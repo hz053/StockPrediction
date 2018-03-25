@@ -21,6 +21,7 @@ public class ViewAccessCodes extends javax.swing.JFrame {
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         //just for testing...
+        //hi this is just for testing...
     }
 
     /**
