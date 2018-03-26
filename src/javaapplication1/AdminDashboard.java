@@ -169,7 +169,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         Home.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         Home.setForeground(new java.awt.Color(236, 240, 241));
-        Home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaapplication1/icons8-home.png"))); // NOI18N
+        Home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons8-home.png"))); // NOI18N
         Home.setText("Home");
         Home.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Home.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -294,7 +294,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 .addComponent(LogOut)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Home)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(44, 62, 80));

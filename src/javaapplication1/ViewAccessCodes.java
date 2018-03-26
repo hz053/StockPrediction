@@ -5,14 +5,22 @@
  */
 package javaapplication1;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JFrame;
-
+import java.util.List;
+import javax.swing.JOptionPane;
 /**
  *
  * @author rasikh
  */
 public class ViewAccessCodes extends javax.swing.JFrame {
-
+private int code;
+private String status;
+private String user;
+int pos = 0;
     /**
      * Creates new form ViewAccessCodes
      */
@@ -20,10 +28,57 @@ public class ViewAccessCodes extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        //just for testing...
-        //hi this is just for testing...
+        ShowPosInfo(pos);
     }
-
+    
+    public ViewAccessCodes(int code, String status, String user) {
+        this.code = code;
+        this.status = status;
+        this.user = user;
+    }
+    
+    public int getcode() {
+        return code;
+    }
+    
+    public String getstatus() {
+        return status;
+    }
+    
+    public String getuser() {
+        return user;
+    }
+    
+    public static List<ViewAccessCodes> BindList() {
+        try {
+            SetConnection conn = new SetConnection();
+            Connection connect = SetConnection.conn;
+            Statement stm = connect.createStatement();
+            
+            String sql = "select * from access";
+            
+            ResultSet rs = stm.executeQuery(sql);
+            List<ViewAccessCodes> list = new ArrayList<ViewAccessCodes>();
+            while(rs.next()) {
+                ViewAccessCodes v = new ViewAccessCodes(Integer.parseInt(rs.getString("code")),
+                                    rs.getString("status"),
+                                    rs.getString("user")
+                 );
+                list.add(v);
+            }
+            connect.close();
+            return list;
+        }
+        catch (Exception e) {}
+        return null;
+    }
+    
+    public void ShowPosInfo(int index){
+        codetxt.setText(Integer.toString(BindList().get(index).getcode()));
+        statustxt.setText(BindList().get(index).getstatus());
+        usertxt.setText(BindList().get(index).getuser());
+    }
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,12 +100,12 @@ public class ViewAccessCodes extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        next = new javax.swing.JLabel();
+        codetxt = new javax.swing.JTextField();
+        usertxt = new javax.swing.JTextField();
+        statustxt = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        back = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -266,51 +321,56 @@ public class ViewAccessCodes extends javax.swing.JFrame {
         jPanel2.add(jLabel5);
         jLabel5.setBounds(240, 100, 60, 30);
 
-        jLabel10.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(236, 240, 241));
-        jLabel10.setText(" Next");
-        jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(jLabel10);
-        jLabel10.setBounds(300, 270, 60, 20);
-
-        jTextField2.setEditable(false);
-        jTextField2.setBackground(new java.awt.Color(108, 122, 137));
-        jTextField2.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(228, 241, 254));
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+        next.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        next.setForeground(new java.awt.Color(236, 240, 241));
+        next.setText(" Next");
+        next.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        next.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nextMouseClicked(evt);
             }
         });
-        jPanel2.add(jTextField2);
-        jTextField2.setBounds(180, 50, 210, 30);
+        jPanel2.add(next);
+        next.setBounds(300, 270, 60, 20);
 
-        jTextField3.setEditable(false);
-        jTextField3.setBackground(new java.awt.Color(108, 122, 137));
-        jTextField3.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(228, 241, 254));
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        codetxt.setEditable(false);
+        codetxt.setBackground(new java.awt.Color(108, 122, 137));
+        codetxt.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        codetxt.setForeground(new java.awt.Color(228, 241, 254));
+        codetxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        codetxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                codetxtActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField3);
-        jTextField3.setBounds(180, 210, 210, 30);
+        jPanel2.add(codetxt);
+        codetxt.setBounds(180, 50, 210, 30);
 
-        jTextField4.setEditable(false);
-        jTextField4.setBackground(new java.awt.Color(108, 122, 137));
-        jTextField4.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(228, 241, 254));
-        jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        usertxt.setEditable(false);
+        usertxt.setBackground(new java.awt.Color(108, 122, 137));
+        usertxt.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        usertxt.setForeground(new java.awt.Color(228, 241, 254));
+        usertxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        usertxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                usertxtActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField4);
-        jTextField4.setBounds(180, 130, 210, 30);
+        jPanel2.add(usertxt);
+        usertxt.setBounds(180, 210, 210, 30);
+
+        statustxt.setEditable(false);
+        statustxt.setBackground(new java.awt.Color(108, 122, 137));
+        statustxt.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        statustxt.setForeground(new java.awt.Color(228, 241, 254));
+        statustxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        statustxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                statustxtActionPerformed(evt);
+            }
+        });
+        jPanel2.add(statustxt);
+        statustxt.setBounds(180, 130, 210, 30);
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(236, 240, 241));
@@ -319,13 +379,18 @@ public class ViewAccessCodes extends javax.swing.JFrame {
         jPanel2.add(jLabel2);
         jLabel2.setBounds(350, 260, 20, 40);
 
-        jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(236, 240, 241));
-        jLabel3.setIcon(new javax.swing.ImageIcon("/Users/rasikh/Downloads/icons8-chevron_left.png")); // NOI18N
-        jLabel3.setText("Back");
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(jLabel3);
-        jLabel3.setBounds(200, 260, 80, 40);
+        back.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        back.setForeground(new java.awt.Color(236, 240, 241));
+        back.setIcon(new javax.swing.ImageIcon("/Users/rasikh/Downloads/icons8-chevron_left.png")); // NOI18N
+        back.setText("Back");
+        back.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backMouseClicked(evt);
+            }
+        });
+        jPanel2.add(back);
+        back.setBounds(200, 260, 80, 40);
 
         jLabel11.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(236, 240, 241));
@@ -518,9 +583,9 @@ public class ViewAccessCodes extends javax.swing.JFrame {
         DeleteUser.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52,73,94)));
     }//GEN-LAST:event_DeleteUserMouseExited
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void codetxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codetxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_codetxtActionPerformed
 
     private void jLabelCloseMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseMouseMoved
 
@@ -538,13 +603,36 @@ public class ViewAccessCodes extends javax.swing.JFrame {
         this.setState(JFrame.ICONIFIED);
     }//GEN-LAST:event_jLabelMinMouseClicked
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void usertxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usertxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_usertxtActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void statustxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statustxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_statustxtActionPerformed
+
+    private void nextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nextMouseClicked
+        pos++;
+               if(pos < BindList().size()){
+                   ShowPosInfo(pos);
+               }
+               else{
+                   pos = BindList().size() - 1;
+                   ShowPosInfo(pos);
+                   JOptionPane.showMessageDialog(null, "End of record!");
+               }
+    }//GEN-LAST:event_nextMouseClicked
+
+    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
+        pos--;
+            if(pos > 0){
+                ShowPosInfo(pos);                
+            }
+            else{
+                pos = 0;
+                ShowPosInfo(pos);
+            }
+    }//GEN-LAST:event_backMouseClicked
 
     /**
      * @param args the command line arguments
@@ -590,11 +678,11 @@ public class ViewAccessCodes extends javax.swing.JFrame {
     private javax.swing.JLabel UserProfile;
     private javax.swing.JLabel ViewAccessCodes;
     private javax.swing.JLabel ViewUsers;
+    private javax.swing.JLabel back;
+    private javax.swing.JTextField codetxt;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabelClose;
@@ -602,8 +690,8 @@ public class ViewAccessCodes extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JLabel next;
+    private javax.swing.JTextField statustxt;
+    private javax.swing.JTextField usertxt;
     // End of variables declaration//GEN-END:variables
 }

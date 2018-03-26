@@ -5,14 +5,26 @@
  */
 package javaapplication1;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import static javaapplication1.ViewAccessCodes.BindList;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author rasikh
  */
 public class ViewUsers extends javax.swing.JFrame {
-
+private String user;
+private String fname;
+private String sname;
+private String mob;
+private String add;
+int pos = 0;
     /**
      * Creates new form ViewUsers
      */
@@ -20,8 +32,71 @@ public class ViewUsers extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        ShowPosInfo(pos);
+    }
+    
+    public ViewUsers(String user, String fname, String sname, String mob, String add) {
+        this.user = user;
+        this.fname = fname;
+        this.sname = sname;
+        this.mob = mob;
+        this.add = add;
     }
 
+    public String getuser() {
+        return user;
+    }
+    
+    public String getfname() {
+        return fname;
+    }
+    
+    public String getsname() {
+        return sname;
+    }
+    
+    public String getmob() {
+        return mob;
+    }
+    
+    public String getadd() {
+        return add;
+    }
+    
+    public static List<ViewUsers> BindList() {
+        try {
+            SetConnection conn = new SetConnection();
+            Connection connect = SetConnection.conn;
+            Statement stm = connect.createStatement();
+            
+            String sql = "select * from user";
+            
+            ResultSet rs = stm.executeQuery(sql);
+            List<ViewUsers> list = new ArrayList<ViewUsers>();
+            while(rs.next()) {
+                ViewUsers v = new ViewUsers(rs.getString("username"),
+                                            rs.getString("fname"),
+                                            rs.getString("sname"),
+                                            rs.getString("mobile"),
+                                            rs.getString("address")
+                 );
+                list.add(v);
+            }
+            connect.close();
+            return list;
+        }
+        catch (Exception e) {}
+        return null;
+    }
+    
+    public void ShowPosInfo(int index){
+        usertxt.setText(BindList().get(index).getuser());
+        fnametxt.setText(BindList().get(index).getfname());
+        snametxt.setText(BindList().get(index).getsname());
+        mobtxt.setText(BindList().get(index).getmob());
+        addtxt.setText(BindList().get(index).getadd());
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,19 +107,19 @@ public class ViewUsers extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
+        next = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        back = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        usertxt = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        fnametxt = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        snametxt = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        mobtxt = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        addtxt = new javax.swing.JTextArea();
         jLabel12 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         UserProfile = new javax.swing.JLabel();
@@ -66,12 +141,17 @@ public class ViewUsers extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(44, 62, 80));
         jPanel2.setLayout(null);
 
-        jLabel10.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(236, 240, 241));
-        jLabel10.setText(" Next");
-        jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(jLabel10);
-        jLabel10.setBounds(300, 470, 60, 20);
+        next.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        next.setForeground(new java.awt.Color(236, 240, 241));
+        next.setText(" Next");
+        next.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        next.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nextMouseClicked(evt);
+            }
+        });
+        jPanel2.add(next);
+        next.setBounds(300, 470, 60, 20);
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(236, 240, 241));
@@ -80,13 +160,18 @@ public class ViewUsers extends javax.swing.JFrame {
         jPanel2.add(jLabel2);
         jLabel2.setBounds(350, 460, 20, 40);
 
-        jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(236, 240, 241));
-        jLabel3.setIcon(new javax.swing.ImageIcon("/Users/rasikh/Downloads/icons8-chevron_left.png")); // NOI18N
-        jLabel3.setText("Back");
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(jLabel3);
-        jLabel3.setBounds(200, 460, 80, 40);
+        back.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        back.setForeground(new java.awt.Color(236, 240, 241));
+        back.setIcon(new javax.swing.ImageIcon("/Users/rasikh/Downloads/icons8-chevron_left.png")); // NOI18N
+        back.setText("Back");
+        back.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backMouseClicked(evt);
+            }
+        });
+        jPanel2.add(back);
+        back.setBounds(200, 460, 80, 40);
 
         jLabel7.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(236, 240, 241));
@@ -94,18 +179,18 @@ public class ViewUsers extends javax.swing.JFrame {
         jPanel2.add(jLabel7);
         jLabel7.setBounds(220, 10, 130, 30);
 
-        jTextField4.setEditable(false);
-        jTextField4.setBackground(new java.awt.Color(108, 122, 137));
-        jTextField4.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(228, 241, 254));
-        jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        usertxt.setEditable(false);
+        usertxt.setBackground(new java.awt.Color(108, 122, 137));
+        usertxt.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        usertxt.setForeground(new java.awt.Color(228, 241, 254));
+        usertxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        usertxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                usertxtActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField4);
-        jTextField4.setBounds(180, 40, 210, 30);
+        jPanel2.add(usertxt);
+        usertxt.setBounds(180, 40, 210, 30);
 
         jLabel6.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(236, 240, 241));
@@ -113,18 +198,18 @@ public class ViewUsers extends javax.swing.JFrame {
         jPanel2.add(jLabel6);
         jLabel6.setBounds(220, 80, 130, 30);
 
-        jTextField3.setEditable(false);
-        jTextField3.setBackground(new java.awt.Color(108, 122, 137));
-        jTextField3.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(228, 241, 254));
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        fnametxt.setEditable(false);
+        fnametxt.setBackground(new java.awt.Color(108, 122, 137));
+        fnametxt.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        fnametxt.setForeground(new java.awt.Color(228, 241, 254));
+        fnametxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fnametxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                fnametxtActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField3);
-        jTextField3.setBounds(180, 110, 210, 30);
+        jPanel2.add(fnametxt);
+        fnametxt.setBounds(180, 110, 210, 30);
 
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(236, 240, 241));
@@ -132,18 +217,18 @@ public class ViewUsers extends javax.swing.JFrame {
         jPanel2.add(jLabel5);
         jLabel5.setBounds(240, 160, 130, 30);
 
-        jTextField1.setEditable(false);
-        jTextField1.setBackground(new java.awt.Color(108, 122, 137));
-        jTextField1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(228, 241, 254));
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        snametxt.setEditable(false);
+        snametxt.setBackground(new java.awt.Color(108, 122, 137));
+        snametxt.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        snametxt.setForeground(new java.awt.Color(228, 241, 254));
+        snametxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        snametxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                snametxtActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField1);
-        jTextField1.setBounds(180, 190, 210, 30);
+        jPanel2.add(snametxt);
+        snametxt.setBounds(180, 190, 210, 30);
 
         jLabel11.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(236, 240, 241));
@@ -151,25 +236,26 @@ public class ViewUsers extends javax.swing.JFrame {
         jPanel2.add(jLabel11);
         jLabel11.setBounds(260, 240, 64, 30);
 
-        jTextField2.setEditable(false);
-        jTextField2.setBackground(new java.awt.Color(108, 122, 137));
-        jTextField2.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(228, 241, 254));
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        mobtxt.setEditable(false);
+        mobtxt.setBackground(new java.awt.Color(108, 122, 137));
+        mobtxt.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        mobtxt.setForeground(new java.awt.Color(228, 241, 254));
+        mobtxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        mobtxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                mobtxtActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField2);
-        jTextField2.setBounds(180, 270, 210, 30);
+        jPanel2.add(mobtxt);
+        mobtxt.setBounds(180, 270, 210, 30);
 
-        jTextArea1.setBackground(new java.awt.Color(108, 122, 137));
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jTextArea1.setForeground(new java.awt.Color(228, 241, 254));
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        addtxt.setEditable(false);
+        addtxt.setBackground(new java.awt.Color(108, 122, 137));
+        addtxt.setColumns(20);
+        addtxt.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        addtxt.setForeground(new java.awt.Color(228, 241, 254));
+        addtxt.setRows(5);
+        jScrollPane1.setViewportView(addtxt);
 
         jPanel2.add(jScrollPane1);
         jScrollPane1.setBounds(160, 350, 270, 100);
@@ -572,21 +658,44 @@ public class ViewUsers extends javax.swing.JFrame {
         this.setState(JFrame.ICONIFIED);
     }//GEN-LAST:event_jLabelMinMouseClicked
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void usertxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usertxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_usertxtActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void fnametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnametxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_fnametxtActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void snametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_snametxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_snametxtActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void mobtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mobtxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_mobtxtActionPerformed
+
+    private void nextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nextMouseClicked
+        pos++;
+               if(pos < BindList().size()){
+                   ShowPosInfo(pos);
+               }
+               else{
+                   pos = BindList().size() - 1;
+                   ShowPosInfo(pos);
+                   JOptionPane.showMessageDialog(null, "End of record!");
+               }
+    }//GEN-LAST:event_nextMouseClicked
+
+    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
+        pos--;
+            if(pos > 0){
+                ShowPosInfo(pos);                
+            }
+            else{
+                pos = 0;
+                ShowPosInfo(pos);
+            }
+    }//GEN-LAST:event_backMouseClicked
 
     /**
      * @param args the command line arguments
@@ -632,12 +741,13 @@ public class ViewUsers extends javax.swing.JFrame {
     private javax.swing.JLabel UserProfile;
     private javax.swing.JLabel ViewAccessCodes;
     private javax.swing.JLabel ViewUsers;
+    private javax.swing.JTextArea addtxt;
+    private javax.swing.JLabel back;
+    private javax.swing.JTextField fnametxt;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -647,10 +757,9 @@ public class ViewUsers extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField mobtxt;
+    private javax.swing.JLabel next;
+    private javax.swing.JTextField snametxt;
+    private javax.swing.JTextField usertxt;
     // End of variables declaration//GEN-END:variables
 }
