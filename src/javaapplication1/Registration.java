@@ -5,7 +5,6 @@
  */
 package javaapplication1;
 
-import com.sun.istack.internal.logging.Logger;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -554,7 +553,6 @@ public class Registration extends javax.swing.JFrame {
                 //System.out.println(ef);
             }
             catch (Exception ex) {
-               Logger.getLogger(Login.class).log(Level.SEVERE, null, ex);
             }
             if(!pass.getText().equalsIgnoreCase(cpass.getText())) {
                 JOptionPane.showMessageDialog(null, "Passwords do not match!");
