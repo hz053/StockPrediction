@@ -488,9 +488,52 @@ public class AdminSecurity extends javax.swing.JFrame {
     private void CreateAccessCodeMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CreateAccessCodeMouseMoved
         CreateAccessCode.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(108,122,137)));
     }//GEN-LAST:event_CreateAccessCodeMouseMoved
-
+    
+    public void addaccesscode(int code) {
+            try {
+            
+            SetConnection conn = new SetConnection();
+            Connection connect = SetConnection.conn;
+            Statement stm = connect.createStatement();
+            
+            String sql = "insert into access (code) VALUES ('"+code+"')";
+            
+            stm.executeUpdate(sql);
+            
+            connect.close();
+        }
+        catch (Exception e) {}
+        }
+    
+    public boolean searchaccesscode(int acode) {
+        try {
+            SetConnection conn = new SetConnection();
+            Connection connect = SetConnection.conn;
+            Statement stm = connect.createStatement();
+            
+            String sql = "select * from access where code='"+acode+"'";
+            
+            ResultSet rs = stm.executeQuery(sql);
+            if(rs.next()) {
+                return true;
+            }
+            connect.close();
+        }
+        catch (Exception e) {}
+        return false;
+    }
+    
     private void CreateAccessCodeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CreateAccessCodeMouseClicked
-        // TODO add your handling code here:
+        RandNum rand = new RandNum();
+                while(searchaccesscode(rand.getRand())) {
+                    rand = new RandNum();
+                    JOptionPane.showMessageDialog(null, "Your new access code is: "+rand.getRand()+"");
+                    addaccesscode(rand.getRand());
+                }
+                if(!searchaccesscode(rand.getRand())) {
+                    JOptionPane.showMessageDialog(null, "Your new access code is: "+rand.getRand()+"");
+                    addaccesscode(rand.getRand());
+                }
     }//GEN-LAST:event_CreateAccessCodeMouseClicked
 
     private void CreateAccessCodeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CreateAccessCodeMouseExited

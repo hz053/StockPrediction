@@ -652,9 +652,96 @@ public class AdminDashboard extends javax.swing.JFrame {
     private void DeleteUserMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeleteUserMouseMoved
         DeleteUser.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(108,122,137)));
     }//GEN-LAST:event_DeleteUserMouseMoved
-
+    
+    public boolean finduser(String user) {
+        try {
+            SetConnection conn = new SetConnection();
+            Connection connect = SetConnection.conn;
+            Statement stm = connect.createStatement();
+            
+            String sql = "select * from user where username='"+user+"'";
+            
+            ResultSet rs = stm.executeQuery(sql);
+            if(rs.next()) {
+                return true;
+            }
+            connect.close();
+        }
+        catch (Exception e) {}
+        return false;
+    }
+    
+    public void deletetwofactor(String user) {
+        try {
+            SetConnection conn = new SetConnection();
+            Connection connect = SetConnection.conn;
+            Statement stm = connect.createStatement();
+            
+            String sql = "delete from twofactor where user='"+user+"'";
+            
+            int res = stm.executeUpdate(sql);
+            connect.close();
+        }
+        catch (Exception e) {}
+    }
+    
+    public void deleteaccesscode(String user) {
+        try {
+            SetConnection conn = new SetConnection();
+            Connection connect = SetConnection.conn;
+            Statement stm = connect.createStatement();
+            
+            String sql = "delete from access where user='"+user+"'";
+            
+            int res = stm.executeUpdate(sql);
+            connect.close();
+        }
+        catch (Exception e) {}
+    }
+    
+    public boolean deleteuser(String user) {
+        try {
+            SetConnection conn = new SetConnection();
+            Connection connect = SetConnection.conn;
+            Statement stm = connect.createStatement();
+            
+            String sql = "delete from user where username='"+user+"'";
+            
+            int res = stm.executeUpdate(sql);
+            if(res == 1) {
+                return true;
+            }
+            connect.close();
+        }
+        catch (Exception e) {}
+        return false;
+    }
+    
     private void DeleteUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeleteUserMouseClicked
-        // TODO add your handling code here:
+        int input=1000;
+        String deluser = JOptionPane.showInputDialog("Please enter username: ");
+        if(finduser(deluser)) {
+            input = JOptionPane.showOptionDialog(null, "Do you really want to delete this user?", "Message", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "No such user exist!");
+        }
+        if(input == JOptionPane.OK_OPTION)
+            {   
+                if(deluser.equalsIgnoreCase("admin")) {
+                    JOptionPane.showMessageDialog(null, "You can not delete super user!");
+                }
+                else {
+                    if(deleteuser(deluser)) {
+                        deletetwofactor(deluser);
+                        deleteaccesscode(deluser);
+                        JOptionPane.showMessageDialog(null, deluser + " successfully deleted!");
+                    }
+                }     
+        }
+        else if(input == JOptionPane.CANCEL_OPTION) {
+            //do nothing
+        }
     }//GEN-LAST:event_DeleteUserMouseClicked
 
     private void DeleteUserMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeleteUserMouseExited

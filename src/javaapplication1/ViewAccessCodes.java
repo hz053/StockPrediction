@@ -533,9 +533,52 @@ int pos = 0;
     private void CreateAccessCodeMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CreateAccessCodeMouseMoved
         CreateAccessCode.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(108,122,137)));
     }//GEN-LAST:event_CreateAccessCodeMouseMoved
-
+    
+    public void addaccesscode(int code) {
+            try {
+            
+            SetConnection conn = new SetConnection();
+            Connection connect = SetConnection.conn;
+            Statement stm = connect.createStatement();
+            
+            String sql = "insert into access (code) VALUES ('"+code+"')";
+            
+            stm.executeUpdate(sql);
+            
+            connect.close();
+        }
+        catch (Exception e) {}
+        }
+    
+    public boolean searchaccesscode(int acode) {
+        try {
+            SetConnection conn = new SetConnection();
+            Connection connect = SetConnection.conn;
+            Statement stm = connect.createStatement();
+            
+            String sql = "select * from access where code='"+acode+"'";
+            
+            ResultSet rs = stm.executeQuery(sql);
+            if(rs.next()) {
+                return true;
+            }
+            connect.close();
+        }
+        catch (Exception e) {}
+        return false;
+    }
+    
     private void CreateAccessCodeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CreateAccessCodeMouseClicked
-        // TODO add your handling code here:
+        RandNum rand = new RandNum();
+                while(searchaccesscode(rand.getRand())) {
+                    rand = new RandNum();
+                    JOptionPane.showMessageDialog(null, "Your new access code is: "+rand.getRand()+"");
+                    addaccesscode(rand.getRand());
+                }
+                if(!searchaccesscode(rand.getRand())) {
+                    JOptionPane.showMessageDialog(null, "Your new access code is: "+rand.getRand()+"");
+                    addaccesscode(rand.getRand());
+                }
     }//GEN-LAST:event_CreateAccessCodeMouseClicked
 
     private void CreateAccessCodeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CreateAccessCodeMouseExited
@@ -574,9 +617,94 @@ int pos = 0;
     private void DeleteUserMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeleteUserMouseMoved
         DeleteUser.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(108,122,137)));
     }//GEN-LAST:event_DeleteUserMouseMoved
-
+    
+    public boolean deleteuser(String user) {
+        try {
+            SetConnection conn = new SetConnection();
+            Connection connect = SetConnection.conn;
+            Statement stm = connect.createStatement();
+            
+            String sql = "delete from user where username='"+user+"'";
+            
+            int res = stm.executeUpdate(sql);
+            if(res == 1) {
+                return true;
+            }
+            connect.close();
+        }
+        catch (Exception e) {}
+        return false;
+    }
+    
+    public boolean finduser(String user) {
+        try {
+            SetConnection conn = new SetConnection();
+            Connection connect = SetConnection.conn;
+            Statement stm = connect.createStatement();
+            
+            String sql = "select * from user where username='"+user+"'";
+            
+            ResultSet rs = stm.executeQuery(sql);
+            if(rs.next()) {
+                return true;
+            }
+            connect.close();
+        }
+        catch (Exception e) {}
+        return false;
+    }
+    public void deletetwofactor(String user) {
+        try {
+            SetConnection conn = new SetConnection();
+            Connection connect = SetConnection.conn;
+            Statement stm = connect.createStatement();
+            
+            String sql = "delete from twofactor where user='"+user+"'";
+            
+            int res = stm.executeUpdate(sql);
+            connect.close();
+        }
+        catch (Exception e) {}
+    }
+    public void deleteaccesscode(String user) {
+        try {
+            SetConnection conn = new SetConnection();
+            Connection connect = SetConnection.conn;
+            Statement stm = connect.createStatement();
+            
+            String sql = "delete from access where user='"+user+"'";
+            
+            int res = stm.executeUpdate(sql);
+            connect.close();
+        }
+        catch (Exception e) {}
+    }
+    
     private void DeleteUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeleteUserMouseClicked
-        // TODO add your handling code here:
+        int input=1000;
+        String deluser = JOptionPane.showInputDialog("Please enter username: ");
+        if(finduser(deluser)) {
+            input = JOptionPane.showOptionDialog(null, "Do you really want to delete this user?", "Message", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "No such user exist!");
+        }
+        if(input == JOptionPane.OK_OPTION)
+            {   
+                if(deluser.equalsIgnoreCase("admin")) {
+                    JOptionPane.showMessageDialog(null, "You can not delete super user!");
+                }
+                else {
+                    if(deleteuser(deluser)) {
+                        deletetwofactor(deluser);
+                        deleteaccesscode(deluser);
+                        JOptionPane.showMessageDialog(null, deluser + " successfully deleted!");
+                    }
+                }     
+        }
+        else if(input == JOptionPane.CANCEL_OPTION) {
+            //do nothing
+        }
     }//GEN-LAST:event_DeleteUserMouseClicked
 
     private void DeleteUserMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeleteUserMouseExited
