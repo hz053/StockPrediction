@@ -540,9 +540,40 @@ public class AdminDashboard extends javax.swing.JFrame {
     private void mobileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mobileActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mobileActionPerformed
-
-    private void SaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SaveMouseClicked
+    
+    public void adduser(String fname, String sname, String mobile, String address) {
+        try {
+            
+            SetConnection conn = new SetConnection();
+            Connection connect = SetConnection.conn;
+            Statement stm = connect.createStatement();
+            
+            String sql = "update user SET  fname='"+fname+"', sname='"+sname+"', mobile='"+mobile+"', address='"+address+"' where username='"+Login.user+"'";
+            
+            stm.executeUpdate(sql);
+            
+            connect.close();
+        }
+        catch (Exception e) {}
         
+    }
+    private void SaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SaveMouseClicked
+        if(fname.getText().equalsIgnoreCase("")) {
+                JOptionPane.showMessageDialog(null, "First Name cannot be NULL");
+            }
+        else if(sname.getText().equalsIgnoreCase("")) {
+                JOptionPane.showMessageDialog(null, "Surname cannot be NULL");
+            }
+        else if(mobile.getText().equalsIgnoreCase("")) {
+                JOptionPane.showMessageDialog(null, "Mobile cannot be NULL");
+            }
+        else if(address.getText().equalsIgnoreCase("")) {
+                JOptionPane.showMessageDialog(null, "Address cannot be NULL");
+            }
+        else {
+            adduser(fname.getText(),sname.getText(),mobile.getText(),address.getText());
+            JOptionPane.showMessageDialog(null, "New changes saved successfully!");
+        }
     }//GEN-LAST:event_SaveMouseClicked
 
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed

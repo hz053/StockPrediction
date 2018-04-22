@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 /**
  *
  * @author rasikh
@@ -490,14 +491,41 @@ public class Dashboard extends javax.swing.JFrame {
         sec.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.dispose();
     }//GEN-LAST:event_SecuritySettingsMouseClicked
-
+    
+    public void adduser(String fname, String sname, String mobile, String address) {
+        try {
+            
+            SetConnection conn = new SetConnection();
+            Connection connect = SetConnection.conn;
+            Statement stm = connect.createStatement();
+            
+            String sql = "update user SET  fname='"+fname+"', sname='"+sname+"', mobile='"+mobile+"', address='"+address+"' where username='"+Login.user+"'";
+            
+            stm.executeUpdate(sql);
+            
+            connect.close();
+        }
+        catch (Exception e) {}
+        
+    }
+    
     private void saveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveMouseClicked
-        Main main = new Main();
-        main.setVisible(true);
-        main.pack();
-        main.setLocationRelativeTo(null);
-        main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();
+        if(fname.getText().equalsIgnoreCase("")) {
+                JOptionPane.showMessageDialog(null, "First Name cannot be NULL");
+            }
+        else if(sname.getText().equalsIgnoreCase("")) {
+                JOptionPane.showMessageDialog(null, "Surname cannot be NULL");
+            }
+        else if(mobile.getText().equalsIgnoreCase("")) {
+                JOptionPane.showMessageDialog(null, "Mobile cannot be NULL");
+            }
+        else if(address.getText().equalsIgnoreCase("")) {
+                JOptionPane.showMessageDialog(null, "Address cannot be NULL");
+            }
+        else {
+            adduser(fname.getText(),sname.getText(),mobile.getText(),address.getText());
+            JOptionPane.showMessageDialog(null, "New changes saved successfully!");
+        }
     }//GEN-LAST:event_saveMouseClicked
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
