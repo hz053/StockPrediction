@@ -6,23 +6,26 @@
 package javaapplication1;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author rasikh
  */
-public class Visualize extends javax.swing.JFrame {
+public class UserStats extends javax.swing.JFrame {
 
     /**
-     * Creates new form Visualize
+     * Creates new form UserStats
      */
-    public Visualize() {
+    public UserStats() {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        settextfields(Login.user);
     }
 
     /**
@@ -34,28 +37,90 @@ public class Visualize extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        logouttxt = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        durationtxt = new javax.swing.JTextField();
+        logintxt = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         UserProfile = new javax.swing.JLabel();
         SecuritySettings = new javax.swing.JLabel();
         LogOut = new javax.swing.JLabel();
         Home = new javax.swing.JLabel();
-        SecuritySettings1 = new javax.swing.JLabel();
-        SecuritySettings2 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        UserStats = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabelClose = new javax.swing.JLabel();
         jLabelMin = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
+
+        jPanel2.setBackground(new java.awt.Color(44, 62, 80));
+        jPanel2.setLayout(null);
+
+        jLabel6.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(236, 240, 241));
+        jLabel6.setText("Last logged out:");
+        jPanel2.add(jLabel6);
+        jLabel6.setBounds(210, 80, 150, 30);
+
+        logouttxt.setBackground(new java.awt.Color(108, 122, 137));
+        logouttxt.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        logouttxt.setForeground(new java.awt.Color(228, 241, 254));
+        logouttxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        logouttxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logouttxtActionPerformed(evt);
+            }
+        });
+        jPanel2.add(logouttxt);
+        logouttxt.setBounds(180, 110, 210, 30);
+
+        jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(236, 240, 241));
+        jLabel5.setText("Duration:");
+        jPanel2.add(jLabel5);
+        jLabel5.setBounds(270, 150, 90, 30);
+
+        durationtxt.setBackground(new java.awt.Color(108, 122, 137));
+        durationtxt.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        durationtxt.setForeground(new java.awt.Color(228, 241, 254));
+        durationtxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        durationtxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                durationtxtActionPerformed(evt);
+            }
+        });
+        jPanel2.add(durationtxt);
+        durationtxt.setBounds(180, 180, 210, 30);
+
+        logintxt.setEditable(false);
+        logintxt.setBackground(new java.awt.Color(108, 122, 137));
+        logintxt.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        logintxt.setForeground(new java.awt.Color(228, 241, 254));
+        logintxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        logintxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logintxtActionPerformed(evt);
+            }
+        });
+        jPanel2.add(logintxt);
+        logintxt.setBounds(180, 40, 210, 30);
+
+        jLabel8.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(236, 240, 241));
+        jLabel8.setText("Last logged in:");
+        jPanel2.add(jLabel8);
+        jLabel8.setBounds(220, 10, 130, 30);
 
         jPanel3.setBackground(new java.awt.Color(52, 73, 94));
 
         UserProfile.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         UserProfile.setForeground(new java.awt.Color(236, 240, 241));
-        UserProfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons8-bar_chart.png"))); // NOI18N
-        UserProfile.setText("Bar Chart");
+        UserProfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons8-user.png"))); // NOI18N
+        UserProfile.setText("User Profile");
         UserProfile.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         UserProfile.setMinimumSize(new java.awt.Dimension(196, 48));
         UserProfile.setPreferredSize(new java.awt.Dimension(196, 48));
@@ -75,8 +140,8 @@ public class Visualize extends javax.swing.JFrame {
 
         SecuritySettings.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         SecuritySettings.setForeground(new java.awt.Color(236, 240, 241));
-        SecuritySettings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons8-line_chart.png"))); // NOI18N
-        SecuritySettings.setText("Line Chart");
+        SecuritySettings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons8-key.png"))); // NOI18N
+        SecuritySettings.setText("Security Settings");
         SecuritySettings.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         SecuritySettings.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -130,41 +195,22 @@ public class Visualize extends javax.swing.JFrame {
             }
         });
 
-        SecuritySettings1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        SecuritySettings1.setForeground(new java.awt.Color(236, 240, 241));
-        SecuritySettings1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons8-scatter_plot.png"))); // NOI18N
-        SecuritySettings1.setText("Scatter Plot");
-        SecuritySettings1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        SecuritySettings1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        UserStats.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        UserStats.setForeground(new java.awt.Color(236, 240, 241));
+        UserStats.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons8-new_spreadsheet.png"))); // NOI18N
+        UserStats.setText("User Stats");
+        UserStats.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        UserStats.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
-                SecuritySettings1MouseMoved(evt);
+                UserStatsMouseMoved(evt);
             }
         });
-        SecuritySettings1.addMouseListener(new java.awt.event.MouseAdapter() {
+        UserStats.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                SecuritySettings1MouseClicked(evt);
+                UserStatsMouseClicked(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                SecuritySettings1MouseExited(evt);
-            }
-        });
-
-        SecuritySettings2.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        SecuritySettings2.setForeground(new java.awt.Color(236, 240, 241));
-        SecuritySettings2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons8-details.png"))); // NOI18N
-        SecuritySettings2.setText("Summary");
-        SecuritySettings2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        SecuritySettings2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                SecuritySettings2MouseMoved(evt);
-            }
-        });
-        SecuritySettings2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                SecuritySettings2MouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                SecuritySettings2MouseExited(evt);
+                UserStatsMouseExited(evt);
             }
         });
 
@@ -176,10 +222,7 @@ public class Visualize extends javax.swing.JFrame {
             .addComponent(SecuritySettings, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
             .addComponent(LogOut, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(Home, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(SecuritySettings1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(SecuritySettings2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(UserStats, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,25 +232,20 @@ public class Visualize extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(SecuritySettings)
                 .addGap(18, 18, 18)
-                .addComponent(SecuritySettings1)
-                .addGap(18, 18, 18)
-                .addComponent(SecuritySettings2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
+                .addComponent(UserStats)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 205, Short.MAX_VALUE)
                 .addComponent(LogOut)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Home)
                 .addGap(15, 15, 15))
         );
 
-        jPanel2.setBackground(new java.awt.Color(44, 62, 80));
-        jPanel2.setLayout(null);
-
         jPanel1.setBackground(new java.awt.Color(248, 148, 6));
         jPanel1.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Visualize");
+        jLabel1.setText("Dashboard");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(10, 10, 120, 22);
 
@@ -257,13 +295,44 @@ public class Visualize extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    public void settextfields(String user) {
+        try {
+            SetConnection conn = new SetConnection();
+            Connection connect = SetConnection.conn;
+            Statement stm = connect.createStatement();
+            
+            String sql = "select date_format(last_logged_in,'%Y-%m-%d %H:%i:%s') as last_logged_in, date_format(last_logged_out,'%Y-%m-%d %H:%i:%s') as last_logged_out,TIMEDIFF(last_logged_out,last_logged_in) as time from user where username='"+user+"'";
+            
+            ResultSet rs = stm.executeQuery(sql);
+            if(rs.next()) {
+                logintxt.setText(rs.getString("last_logged_in"));
+                logouttxt.setText(rs.getString("last_logged_out"));
+                durationtxt.setText(rs.getString("time"));
+            }
+            connect.close();
+        }
+        catch (Exception e) {}
+        
+    }
+    private void logouttxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logouttxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_logouttxtActionPerformed
+
+    private void durationtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_durationtxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_durationtxtActionPerformed
+
+    private void logintxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logintxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_logintxtActionPerformed
 
     private void UserProfileMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UserProfileMouseMoved
         UserProfile.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(108,122,137)));
@@ -330,27 +399,21 @@ public class Visualize extends javax.swing.JFrame {
         Home.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52,73,94)));
     }//GEN-LAST:event_HomeMouseExited
 
+    private void UserStatsMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UserStatsMouseMoved
+        UserStats.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(108,122,137)));
+    }//GEN-LAST:event_UserStatsMouseMoved
+
+    private void UserStatsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UserStatsMouseClicked
+        this.setVisible(true);
+    }//GEN-LAST:event_UserStatsMouseClicked
+
+    private void UserStatsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UserStatsMouseExited
+        UserStats.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52,73,94)));
+    }//GEN-LAST:event_UserStatsMouseExited
+
     private void jLabelCloseMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseMouseMoved
 
     }//GEN-LAST:event_jLabelCloseMouseMoved
-    
-    public void addtimestamp(String user) {
-            try {
-            
-            SetConnection conn = new SetConnection();
-            Connection connect = SetConnection.conn;
-            Statement stm = connect.createStatement();
-            
-            Timestamp time = new Timestamp(System.currentTimeMillis());
-            String sql = "update user SET last_logged_out = '"+time+"' where username = '"+user+"'";
-            
-            stm.executeUpdate(sql);
-            
-            connect.close();
-        }
-        catch (Exception e) {}
-    }
-    
     public void addtimestampin(String user) {
             try {
             
@@ -368,6 +431,23 @@ public class Visualize extends javax.swing.JFrame {
         catch (Exception e) {}
         }
     
+        public void addtimestamp(String user) {
+            try {
+            
+            SetConnection conn = new SetConnection();
+            Connection connect = SetConnection.conn;
+            Statement stm = connect.createStatement();
+            
+            Timestamp time = new Timestamp(System.currentTimeMillis());
+            String sql = "update user SET last_logged_out = '"+time+"' where username = '"+user+"'";
+            
+            stm.executeUpdate(sql);
+            
+            connect.close();
+        }
+        catch (Exception e) {}
+    }
+        
     private void jLabelCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseMouseClicked
         addtimestampin(Login.user);
         addtimestamp(Login.user);
@@ -381,30 +461,6 @@ public class Visualize extends javax.swing.JFrame {
     private void jLabelMinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMinMouseClicked
         this.setState(JFrame.ICONIFIED);
     }//GEN-LAST:event_jLabelMinMouseClicked
-
-    private void SecuritySettings1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SecuritySettings1MouseMoved
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SecuritySettings1MouseMoved
-
-    private void SecuritySettings1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SecuritySettings1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SecuritySettings1MouseClicked
-
-    private void SecuritySettings1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SecuritySettings1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SecuritySettings1MouseExited
-
-    private void SecuritySettings2MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SecuritySettings2MouseMoved
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SecuritySettings2MouseMoved
-
-    private void SecuritySettings2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SecuritySettings2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SecuritySettings2MouseClicked
-
-    private void SecuritySettings2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SecuritySettings2MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SecuritySettings2MouseExited
 
     /**
      * @param args the command line arguments
@@ -423,20 +479,20 @@ public class Visualize extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Visualize.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserStats.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Visualize.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserStats.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Visualize.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserStats.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Visualize.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserStats.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Visualize().setVisible(true);
+                new UserStats().setVisible(true);
             }
         });
     }
@@ -445,14 +501,19 @@ public class Visualize extends javax.swing.JFrame {
     private javax.swing.JLabel Home;
     private javax.swing.JLabel LogOut;
     private javax.swing.JLabel SecuritySettings;
-    private javax.swing.JLabel SecuritySettings1;
-    private javax.swing.JLabel SecuritySettings2;
     private javax.swing.JLabel UserProfile;
+    private javax.swing.JLabel UserStats;
+    private javax.swing.JTextField durationtxt;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabelClose;
     private javax.swing.JLabel jLabelMin;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JTextField logintxt;
+    private javax.swing.JTextField logouttxt;
     // End of variables declaration//GEN-END:variables
 }

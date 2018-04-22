@@ -12,6 +12,7 @@ package javaapplication1;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -315,7 +316,7 @@ public class Security extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jLabelClose);
-        jLabelClose.setBounds(760, 10, 12, 22);
+        jLabelClose.setBounds(770, 10, 12, 22);
 
         jLabelMin.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabelMin.setForeground(new java.awt.Color(255, 255, 255));
@@ -327,17 +328,18 @@ public class Security extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jLabelMin);
-        jLabelMin.setBounds(740, 10, 11, 22);
+        jLabelMin.setBounds(750, 10, 11, 22);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 780, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -381,6 +383,8 @@ public class Security extends javax.swing.JFrame {
     }//GEN-LAST:event_LogOutMouseMoved
 
     private void LogOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogOutMouseClicked
+        addtimestampin(Login.user);
+        addtimestamp(Login.user);
         Login log = new Login();
         log.setVisible(true);
         log.pack();
@@ -414,7 +418,43 @@ public class Security extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jLabelCloseMouseMoved
 
+    public void addtimestamp(String user) {
+            try {
+            
+            SetConnection conn = new SetConnection();
+            Connection connect = SetConnection.conn;
+            Statement stm = connect.createStatement();
+            
+            Timestamp time = new Timestamp(System.currentTimeMillis());
+            String sql = "update user SET last_logged_out = '"+time+"' where username = '"+user+"'";
+            
+            stm.executeUpdate(sql);
+            
+            connect.close();
+        }
+        catch (Exception e) {}
+    }
+    
+    public void addtimestampin(String user) {
+            try {
+            
+            SetConnection conn = new SetConnection();
+            Connection connect = SetConnection.conn;
+            Statement stm = connect.createStatement();
+            
+            
+            String sql = "update user SET last_logged_in = '"+Login.time+"' where username = '"+user+"'";
+            
+            stm.executeUpdate(sql);
+            
+            connect.close();
+        }
+        catch (Exception e) {}
+        }
+    
     private void jLabelCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseMouseClicked
+        addtimestampin(Login.user);
+        addtimestamp(Login.user);
         System.exit(0);
     }//GEN-LAST:event_jLabelCloseMouseClicked
 
@@ -606,15 +646,20 @@ public class Security extends javax.swing.JFrame {
     }//GEN-LAST:event_twoFactorActionPerformed
 
     private void UserStatsMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UserStatsMouseMoved
-        // TODO add your handling code here:
+        UserStats.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(108,122,137)));
     }//GEN-LAST:event_UserStatsMouseMoved
 
     private void UserStatsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UserStatsMouseClicked
-        // TODO add your handling code here:
+        UserStats ustats = new UserStats();
+        ustats.setVisible(true);
+        ustats.pack();
+        ustats.setLocationRelativeTo(null);
+        ustats.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
     }//GEN-LAST:event_UserStatsMouseClicked
 
     private void UserStatsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UserStatsMouseExited
-        // TODO add your handling code here:
+        UserStats.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52,73,94)));
     }//GEN-LAST:event_UserStatsMouseExited
 
     /**

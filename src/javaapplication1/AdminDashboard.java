@@ -8,6 +8,7 @@ package javaapplication1;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -432,8 +433,44 @@ public class AdminDashboard extends javax.swing.JFrame {
     private void jLabelCloseMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseMouseMoved
 
     }//GEN-LAST:event_jLabelCloseMouseMoved
-
+    
+    public void addtimestamp(String user) {
+            try {
+            
+            SetConnection conn = new SetConnection();
+            Connection connect = SetConnection.conn;
+            Statement stm = connect.createStatement();
+            
+            Timestamp time = new Timestamp(System.currentTimeMillis());
+            String sql = "update user SET last_logged_out = '"+time+"' where username = '"+user+"'";
+            
+            stm.executeUpdate(sql);
+            
+            connect.close();
+        }
+        catch (Exception e) {}
+    }
+    
+    public void addtimestampin(String user) {
+            try {
+            
+            SetConnection conn = new SetConnection();
+            Connection connect = SetConnection.conn;
+            Statement stm = connect.createStatement();
+            
+            
+            String sql = "update user SET last_logged_in = '"+Login.time+"' where username = '"+user+"'";
+            
+            stm.executeUpdate(sql);
+            
+            connect.close();
+        }
+        catch (Exception e) {}
+        }
+    
     private void jLabelCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseMouseClicked
+        addtimestampin(Login.user);
+        addtimestamp(Login.user);
         System.exit(0);
     }//GEN-LAST:event_jLabelCloseMouseClicked
 
@@ -500,6 +537,8 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_LogOutMouseMoved
 
     private void LogOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogOutMouseClicked
+        addtimestampin(Login.user);
+        addtimestamp(Login.user);
         Login log = new Login();
         log.setVisible(true);
         log.pack();

@@ -8,9 +8,9 @@ package javaapplication1;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
-import static javaapplication1.ViewAccessCodes.BindList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -24,6 +24,8 @@ private String fname;
 private String sname;
 private String mob;
 private String add;
+private String last_logged_in;
+private String time;
 int pos = 0;
     /**
      * Creates new form ViewUsers
@@ -35,12 +37,14 @@ int pos = 0;
         ShowPosInfo(pos);
     }
     
-    public ViewUsers(String user, String fname, String sname, String mob, String add) {
+    public ViewUsers(String user, String fname, String sname, String mob, String add, String last_logged_in, String time) {
         this.user = user;
         this.fname = fname;
         this.sname = sname;
         this.mob = mob;
         this.add = add;
+        this.last_logged_in = last_logged_in;
+        this.time = time;
     }
 
     public String getuser() {
@@ -63,13 +67,21 @@ int pos = 0;
         return add;
     }
     
+    public String getlastloggedin() {
+        return last_logged_in;
+    }
+    
+    public String gettime() {
+        return time;
+    }
+    
     public static List<ViewUsers> BindList() {
         try {
             SetConnection conn = new SetConnection();
             Connection connect = SetConnection.conn;
             Statement stm = connect.createStatement();
             
-            String sql = "select * from user";
+            String sql = "select username,fname,sname,mobile,address,date_format(last_logged_in,'%Y-%m-%d %H:%i:%s') as last_logged_in, TIMEDIFF(last_logged_out,last_logged_in) as time from user;";
             
             ResultSet rs = stm.executeQuery(sql);
             List<ViewUsers> list = new ArrayList<ViewUsers>();
@@ -78,7 +90,9 @@ int pos = 0;
                                             rs.getString("fname"),
                                             rs.getString("sname"),
                                             rs.getString("mobile"),
-                                            rs.getString("address")
+                                            rs.getString("address"),
+                                            rs.getString("last_logged_in"),
+                                            rs.getString("time")
                  );
                 list.add(v);
             }
@@ -95,6 +109,8 @@ int pos = 0;
         snametxt.setText(BindList().get(index).getsname());
         mobtxt.setText(BindList().get(index).getmob());
         addtxt.setText(BindList().get(index).getadd());
+        logtxt.setText(BindList().get(index).getlastloggedin());
+        durationtxt.setText(BindList().get(index).gettime());
     }
     
     /**
@@ -118,9 +134,12 @@ int pos = 0;
         snametxt = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         mobtxt = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        addtxt = new javax.swing.JTextArea();
         jLabel12 = new javax.swing.JLabel();
+        addtxt = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        logtxt = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        durationtxt = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         UserProfile = new javax.swing.JLabel();
         SecuritySettings = new javax.swing.JLabel();
@@ -196,7 +215,7 @@ int pos = 0;
         jLabel6.setForeground(new java.awt.Color(236, 240, 241));
         jLabel6.setText("First Name:");
         jPanel2.add(jLabel6);
-        jLabel6.setBounds(220, 80, 130, 30);
+        jLabel6.setBounds(220, 70, 130, 30);
 
         fnametxt.setEditable(false);
         fnametxt.setBackground(new java.awt.Color(108, 122, 137));
@@ -209,13 +228,13 @@ int pos = 0;
             }
         });
         jPanel2.add(fnametxt);
-        fnametxt.setBounds(180, 110, 210, 30);
+        fnametxt.setBounds(180, 100, 210, 30);
 
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(236, 240, 241));
         jLabel5.setText("Surname:");
         jPanel2.add(jLabel5);
-        jLabel5.setBounds(240, 160, 130, 30);
+        jLabel5.setBounds(240, 130, 130, 30);
 
         snametxt.setEditable(false);
         snametxt.setBackground(new java.awt.Color(108, 122, 137));
@@ -228,13 +247,13 @@ int pos = 0;
             }
         });
         jPanel2.add(snametxt);
-        snametxt.setBounds(180, 190, 210, 30);
+        snametxt.setBounds(180, 160, 210, 30);
 
         jLabel11.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(236, 240, 241));
         jLabel11.setText("Mobile:");
         jPanel2.add(jLabel11);
-        jLabel11.setBounds(260, 240, 64, 30);
+        jLabel11.setBounds(260, 190, 64, 30);
 
         mobtxt.setEditable(false);
         mobtxt.setBackground(new java.awt.Color(108, 122, 137));
@@ -247,24 +266,64 @@ int pos = 0;
             }
         });
         jPanel2.add(mobtxt);
-        mobtxt.setBounds(180, 270, 210, 30);
-
-        addtxt.setEditable(false);
-        addtxt.setBackground(new java.awt.Color(108, 122, 137));
-        addtxt.setColumns(20);
-        addtxt.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        addtxt.setForeground(new java.awt.Color(228, 241, 254));
-        addtxt.setRows(5);
-        jScrollPane1.setViewportView(addtxt);
-
-        jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(160, 350, 270, 100);
+        mobtxt.setBounds(180, 220, 210, 30);
 
         jLabel12.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(236, 240, 241));
         jLabel12.setText("Address:");
         jPanel2.add(jLabel12);
-        jLabel12.setBounds(250, 310, 130, 30);
+        jLabel12.setBounds(250, 250, 130, 30);
+
+        addtxt.setEditable(false);
+        addtxt.setBackground(new java.awt.Color(108, 122, 137));
+        addtxt.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        addtxt.setForeground(new java.awt.Color(228, 241, 254));
+        addtxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        addtxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addtxtActionPerformed(evt);
+            }
+        });
+        jPanel2.add(addtxt);
+        addtxt.setBounds(180, 280, 210, 30);
+
+        jLabel13.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(236, 240, 241));
+        jLabel13.setText("Last logged in:");
+        jPanel2.add(jLabel13);
+        jLabel13.setBounds(200, 320, 130, 30);
+
+        logtxt.setEditable(false);
+        logtxt.setBackground(new java.awt.Color(108, 122, 137));
+        logtxt.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        logtxt.setForeground(new java.awt.Color(228, 241, 254));
+        logtxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        logtxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logtxtActionPerformed(evt);
+            }
+        });
+        jPanel2.add(logtxt);
+        logtxt.setBounds(180, 350, 210, 30);
+
+        jLabel14.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(236, 240, 241));
+        jLabel14.setText("Duration:");
+        jPanel2.add(jLabel14);
+        jLabel14.setBounds(250, 380, 100, 30);
+
+        durationtxt.setEditable(false);
+        durationtxt.setBackground(new java.awt.Color(108, 122, 137));
+        durationtxt.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        durationtxt.setForeground(new java.awt.Color(228, 241, 254));
+        durationtxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        durationtxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                durationtxtActionPerformed(evt);
+            }
+        });
+        jPanel2.add(durationtxt);
+        durationtxt.setBounds(180, 410, 210, 30);
 
         jPanel3.setBackground(new java.awt.Color(52, 73, 94));
 
@@ -560,6 +619,8 @@ int pos = 0;
     }//GEN-LAST:event_LogOutMouseMoved
 
     private void LogOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogOutMouseClicked
+        addtimestampin(Login.user);
+        addtimestamp(Login.user);
         Login log = new Login();
         log.setVisible(true);
         log.pack();
@@ -771,8 +832,43 @@ int pos = 0;
     private void jLabelCloseMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseMouseMoved
 
     }//GEN-LAST:event_jLabelCloseMouseMoved
-
+    public void addtimestamp(String user) {
+            try {
+            
+            SetConnection conn = new SetConnection();
+            Connection connect = SetConnection.conn;
+            Statement stm = connect.createStatement();
+            
+            Timestamp time = new Timestamp(System.currentTimeMillis());
+            String sql = "update user SET last_logged_out = '"+time+"' where username = '"+user+"'";
+            
+            stm.executeUpdate(sql);
+            
+            connect.close();
+        }
+        catch (Exception e) {}
+    }
+    
+    public void addtimestampin(String user) {
+            try {
+            
+            SetConnection conn = new SetConnection();
+            Connection connect = SetConnection.conn;
+            Statement stm = connect.createStatement();
+            
+            
+            String sql = "update user SET last_logged_in = '"+Login.time+"' where username = '"+user+"'";
+            
+            stm.executeUpdate(sql);
+            
+            connect.close();
+        }
+        catch (Exception e) {}
+        }
+    
     private void jLabelCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseMouseClicked
+        addtimestampin(Login.user);
+        addtimestamp(Login.user);
         System.exit(0);
     }//GEN-LAST:event_jLabelCloseMouseClicked
 
@@ -823,6 +919,18 @@ int pos = 0;
             }
     }//GEN-LAST:event_backMouseClicked
 
+    private void addtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addtxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addtxtActionPerformed
+
+    private void logtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logtxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_logtxtActionPerformed
+
+    private void durationtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_durationtxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_durationtxtActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -867,12 +975,15 @@ int pos = 0;
     private javax.swing.JLabel UserProfile;
     private javax.swing.JLabel ViewAccessCodes;
     private javax.swing.JLabel ViewUsers;
-    private javax.swing.JTextArea addtxt;
+    private javax.swing.JTextField addtxt;
     private javax.swing.JLabel back;
+    private javax.swing.JTextField durationtxt;
     private javax.swing.JTextField fnametxt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -882,7 +993,7 @@ int pos = 0;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField logtxt;
     private javax.swing.JTextField mobtxt;
     private javax.swing.JLabel next;
     private javax.swing.JTextField snametxt;

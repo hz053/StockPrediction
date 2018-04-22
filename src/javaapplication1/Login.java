@@ -16,7 +16,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import sun.misc.BASE64Encoder;
 import javax.swing.Timer;
-
+import java.sql.Timestamp;
 /**
  *
  * @author rasikh
@@ -24,6 +24,7 @@ import javax.swing.Timer;
 public class Login extends javax.swing.JFrame {
 public Timer timer = null;
 public static String user;
+public static Timestamp time = new Timestamp(System.currentTimeMillis());
     /**
      * Creates new form Login
      */
@@ -372,12 +373,12 @@ public static String user;
             }
              else if(username.getText().equalsIgnoreCase("admin")){
                  if(twofactoryes("admin")) {
-                    verifywithsecretkey();
+                    verifywithsecretkey();              
                 }
                  else {
                      //access without 2 factor (disabled)
-                     JOptionPane.showMessageDialog(null, "Warning! Low Security: 2 Factor is disabled");
-                        user = username.getText();
+                     JOptionPane.showMessageDialog(null, "Warning! Low Security: 2 Factor is disabled");                        
+                     user = username.getText();
                         Admin adm = new Admin();
                         adm.setVisible(true);
                         adm.pack();
@@ -393,8 +394,8 @@ public static String user;
                 }
                  else {
                      JOptionPane.showMessageDialog(null, "Warning! Low Security: 2 Factor is disabled");
-                        user = username.getText();
-                         Main main = new Main();
+                        user = username.getText();        
+                        Main main = new Main();
                         main.setVisible(true);
                         main.pack();
                         main.setLocationRelativeTo(null);
