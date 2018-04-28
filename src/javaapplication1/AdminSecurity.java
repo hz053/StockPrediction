@@ -57,6 +57,7 @@ public class AdminSecurity extends javax.swing.JFrame {
         ViewAccessCodes = new javax.swing.JLabel();
         ViewUsers = new javax.swing.JLabel();
         DeleteUser = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jPasswordField4 = new javax.swing.JPasswordField();
@@ -75,8 +76,12 @@ public class AdminSecurity extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(780, 615));
+        getContentPane().setLayout(null);
 
         jPanel3.setBackground(new java.awt.Color(52, 73, 94));
+        jPanel3.setPreferredSize(new java.awt.Dimension(250, 580));
+        jPanel3.setSize(new java.awt.Dimension(250, 580));
 
         UserProfile.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         UserProfile.setForeground(new java.awt.Color(236, 240, 241));
@@ -237,13 +242,14 @@ public class AdminSecurity extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(UserProfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(SecuritySettings, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+            .addComponent(SecuritySettings, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
             .addComponent(LogOut, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(Home, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(CreateAccessCode, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-            .addComponent(ViewAccessCodes, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-            .addComponent(ViewUsers, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-            .addComponent(DeleteUser, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+            .addComponent(CreateAccessCode, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+            .addComponent(ViewAccessCodes, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+            .addComponent(ViewUsers, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+            .addComponent(DeleteUser, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+            .addComponent(jSeparator1)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -260,14 +266,21 @@ public class AdminSecurity extends javax.swing.JFrame {
                 .addComponent(ViewUsers)
                 .addGap(18, 18, 18)
                 .addComponent(DeleteUser)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(LogOut)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Home)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
+        getContentPane().add(jPanel3);
+        jPanel3.setBounds(0, 40, 250, 580);
+
         jPanel2.setBackground(new java.awt.Color(44, 62, 80));
+        jPanel2.setPreferredSize(new java.awt.Dimension(590, 580));
+        jPanel2.setSize(new java.awt.Dimension(590, 580));
         jPanel2.setLayout(null);
 
         jLabel6.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
@@ -339,7 +352,7 @@ public class AdminSecurity extends javax.swing.JFrame {
         desc.setForeground(new java.awt.Color(236, 240, 241));
         desc.setText("Scan above image with Google Authenticator then hit Next");
         jPanel2.add(desc);
-        desc.setBounds(20, 430, 530, 30);
+        desc.setBounds(10, 420, 530, 30);
 
         Next.setBackground(new java.awt.Color(89, 171, 227));
         Next.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
@@ -358,6 +371,9 @@ public class AdminSecurity extends javax.swing.JFrame {
         });
         jPanel2.add(Next);
         Next.setBounds(160, 460, 100, 40);
+
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(250, 40, 590, 580);
 
         jPanel1.setBackground(new java.awt.Color(248, 148, 6));
         jPanel1.setLayout(null);
@@ -386,7 +402,7 @@ public class AdminSecurity extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jLabelClose);
-        jLabelClose.setBounds(810, 10, 12, 22);
+        jLabelClose.setBounds(760, 10, 12, 22);
 
         jLabelMin.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabelMin.setForeground(new java.awt.Color(255, 255, 255));
@@ -398,27 +414,10 @@ public class AdminSecurity extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jLabelMin);
-        jLabelMin.setBounds(790, 10, 11, 22);
+        jLabelMin.setBounds(740, 10, 11, 22);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 780, 40);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -780,7 +779,7 @@ public class AdminSecurity extends javax.swing.JFrame {
                 String barcodeData = t.getGoogleAuthenticatorBarCode(secretKey,Login.user,"Stock Prediction");
             //calls to createQRCode
             try {
-                t.createQRCode(barcodeData,"src/resources/qr.png",150,150);
+                t.createQRCode(barcodeData,"src/resources/qradmin.png",150,150);
                 Thread.sleep(3000);
             }
             catch(Exception e) {
@@ -795,7 +794,7 @@ public class AdminSecurity extends javax.swing.JFrame {
             qrImg.setVisible(true);
             Next.setVisible(true);
             desc.setVisible(true);
-            qrImg.setIcon(new ImageIcon(getClass().getResource("/resources/qr.png")));
+            qrImg.setIcon(new ImageIcon(getClass().getResource("/resources/qradmin.png")));
             }
             if(input == JOptionPane.OK_OPTION)
             {
@@ -807,7 +806,7 @@ public class AdminSecurity extends javax.swing.JFrame {
             qrImg.setVisible(true);
             Next.setVisible(true);
             desc.setVisible(true);
-            qrImg.setIcon(new ImageIcon(getClass().getResource("/resources/qr.png")));
+            qrImg.setIcon(new ImageIcon(getClass().getResource("/resources/qradmin.png")));
             }
             if(input == JOptionPane.CANCEL_OPTION) {
                 if(twoFactor.getText()=="Enabled") {
@@ -957,6 +956,7 @@ public class AdminSecurity extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPasswordField jPasswordField4;
     private javax.swing.JPasswordField jPasswordField5;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel qrImg;
     private javax.swing.JToggleButton twoFactor;
     // End of variables declaration//GEN-END:variables

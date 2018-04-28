@@ -4,27 +4,26 @@
  * and open the template in the editor.
  */
 package javaapplication1;
+
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
+
 /**
  *
  * @author rasikh
  */
-public class Dashboard extends javax.swing.JFrame {
+public class HelpDashboard extends javax.swing.JFrame {
 
     /**
-     * Creates new form Dashboard
+     * Creates new form HelpDashboard
      */
-    Main main = new Main();
-    public Dashboard() {
+    public HelpDashboard() {
+        
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        settextfields(Login.user);
     }
 
     /**
@@ -37,19 +36,15 @@ public class Dashboard extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        fname = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        sname = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        mobile = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        address = new javax.swing.JTextArea();
-        save = new javax.swing.JButton();
-        reset = new javax.swing.JButton();
-        uname = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
+        prof = new javax.swing.JTextArea();
+        jLabel13 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        pass = new javax.swing.JTextArea();
+        jLabel14 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        ustats = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabelClose = new javax.swing.JLabel();
@@ -71,130 +66,56 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(44, 62, 80));
         jPanel2.setLayout(null);
 
-        jLabel6.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(236, 240, 241));
-        jLabel6.setText("First Name:");
-        jPanel2.add(jLabel6);
-        jLabel6.setBounds(220, 80, 130, 30);
-
-        fname.setBackground(new java.awt.Color(108, 122, 137));
-        fname.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        fname.setForeground(new java.awt.Color(228, 241, 254));
-        fname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fname.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fnameActionPerformed(evt);
-            }
-        });
-        jPanel2.add(fname);
-        fname.setBounds(180, 110, 210, 30);
-
-        jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(236, 240, 241));
-        jLabel5.setText("Surname:");
-        jPanel2.add(jLabel5);
-        jLabel5.setBounds(240, 160, 130, 30);
-
-        sname.setBackground(new java.awt.Color(108, 122, 137));
-        sname.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        sname.setForeground(new java.awt.Color(228, 241, 254));
-        sname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        sname.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                snameActionPerformed(evt);
-            }
-        });
-        jPanel2.add(sname);
-        sname.setBounds(180, 190, 210, 30);
-
-        jLabel10.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(236, 240, 241));
-        jLabel10.setText("Mobile:");
-        jPanel2.add(jLabel10);
-        jLabel10.setBounds(260, 240, 64, 30);
-
-        mobile.setBackground(new java.awt.Color(108, 122, 137));
-        mobile.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        mobile.setForeground(new java.awt.Color(228, 241, 254));
-        mobile.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        mobile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mobileActionPerformed(evt);
-            }
-        });
-        jPanel2.add(mobile);
-        mobile.setBounds(180, 270, 210, 30);
-
         jLabel12.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(236, 240, 241));
-        jLabel12.setText("Address:");
+        jLabel12.setText("Q1: How do I change or update my profile details?");
         jPanel2.add(jLabel12);
-        jLabel12.setBounds(250, 310, 130, 30);
+        jLabel12.setBounds(20, 10, 470, 30);
 
-        address.setBackground(new java.awt.Color(108, 122, 137));
-        address.setColumns(20);
-        address.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        address.setForeground(new java.awt.Color(228, 241, 254));
-        address.setRows(5);
-        jScrollPane1.setViewportView(address);
+        prof.setEditable(false);
+        prof.setBackground(new java.awt.Color(108, 122, 137));
+        prof.setColumns(20);
+        prof.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        prof.setForeground(new java.awt.Color(228, 241, 254));
+        prof.setRows(5);
+        jScrollPane1.setViewportView(prof);
 
         jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(160, 350, 270, 100);
+        jScrollPane1.setBounds(20, 40, 500, 60);
 
-        save.setBackground(new java.awt.Color(89, 171, 227));
-        save.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        save.setForeground(new java.awt.Color(255, 255, 255));
-        save.setText("Save");
-        save.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        save.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                saveMouseClicked(evt);
-            }
-        });
-        save.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveActionPerformed(evt);
-            }
-        });
-        jPanel2.add(save);
-        save.setBounds(180, 460, 100, 40);
+        jLabel13.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(236, 240, 241));
+        jLabel13.setText("Q2: How do I change my password and 2 factor details?");
+        jPanel2.add(jLabel13);
+        jLabel13.setBounds(20, 120, 500, 30);
 
-        reset.setBackground(new java.awt.Color(242, 38, 19));
-        reset.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        reset.setForeground(new java.awt.Color(255, 255, 255));
-        reset.setText("Reset");
-        reset.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        reset.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                resetMouseClicked(evt);
-            }
-        });
-        reset.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resetActionPerformed(evt);
-            }
-        });
-        jPanel2.add(reset);
-        reset.setBounds(320, 460, 100, 40);
+        pass.setEditable(false);
+        pass.setBackground(new java.awt.Color(108, 122, 137));
+        pass.setColumns(20);
+        pass.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        pass.setForeground(new java.awt.Color(228, 241, 254));
+        pass.setRows(5);
+        jScrollPane2.setViewportView(pass);
 
-        uname.setEditable(false);
-        uname.setBackground(new java.awt.Color(108, 122, 137));
-        uname.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        uname.setForeground(new java.awt.Color(228, 241, 254));
-        uname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        uname.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                unameActionPerformed(evt);
-            }
-        });
-        jPanel2.add(uname);
-        uname.setBounds(180, 40, 210, 30);
+        jPanel2.add(jScrollPane2);
+        jScrollPane2.setBounds(20, 150, 500, 60);
 
-        jLabel8.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(236, 240, 241));
-        jLabel8.setText(" Username:");
-        jPanel2.add(jLabel8);
-        jLabel8.setBounds(220, 10, 130, 30);
+        jLabel14.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(236, 240, 241));
+        jLabel14.setText("Q3: How do I know when was the last time I logged in?");
+        jPanel2.add(jLabel14);
+        jLabel14.setBounds(20, 230, 500, 30);
+
+        ustats.setEditable(false);
+        ustats.setBackground(new java.awt.Color(108, 122, 137));
+        ustats.setColumns(20);
+        ustats.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        ustats.setForeground(new java.awt.Color(228, 241, 254));
+        ustats.setRows(5);
+        jScrollPane3.setViewportView(ustats);
+
+        jPanel2.add(jScrollPane3);
+        jScrollPane3.setBounds(20, 260, 500, 60);
 
         jPanel1.setBackground(new java.awt.Color(248, 148, 6));
         jPanel1.setLayout(null);
@@ -238,7 +159,7 @@ public class Dashboard extends javax.swing.JFrame {
         jLabelMin.setBounds(740, 10, 11, 22);
 
         jPanel3.setBackground(new java.awt.Color(52, 73, 94));
-        jPanel3.setPreferredSize(new java.awt.Dimension(250, 459));
+        jPanel3.setPreferredSize(new java.awt.Dimension(250, 575));
 
         UserProfile.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         UserProfile.setForeground(new java.awt.Color(236, 240, 241));
@@ -385,7 +306,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addComponent(Home, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(UserStats, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(Feedback, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(Help, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Help, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jSeparator2)
         );
         jPanel3Layout.setVerticalGroup(
@@ -397,7 +318,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addComponent(SecuritySettings)
                 .addGap(18, 18, 18)
                 .addComponent(UserStats)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Help)
@@ -425,8 +346,8 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         pack();
@@ -436,23 +357,6 @@ public class Dashboard extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jLabelCloseMouseMoved
     
-    public void addtimestamp(String user) {
-            try {
-            
-            SetConnection conn = new SetConnection();
-            Connection connect = SetConnection.conn;
-            Statement stm = connect.createStatement();
-            
-            Timestamp time = new Timestamp(System.currentTimeMillis());
-            String sql = "update user SET last_logged_out = '"+time+"' where username = '"+user+"'";
-            
-            stm.executeUpdate(sql);
-            
-            connect.close();
-        }
-        catch (Exception e) {}
-    }
-
     public void addtimestampin(String user) {
             try {
             
@@ -470,6 +374,23 @@ public class Dashboard extends javax.swing.JFrame {
         catch (Exception e) {}
         }
     
+        public void addtimestamp(String user) {
+            try {
+            
+            SetConnection conn = new SetConnection();
+            Connection connect = SetConnection.conn;
+            Statement stm = connect.createStatement();
+            
+            Timestamp time = new Timestamp(System.currentTimeMillis());
+            String sql = "update user SET last_logged_out = '"+time+"' where username = '"+user+"'";
+            
+            stm.executeUpdate(sql);
+            
+            connect.close();
+        }
+        catch (Exception e) {}
+    }
+
     private void jLabelCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseMouseClicked
         addtimestampin(Login.user);
         addtimestamp(Login.user);
@@ -488,6 +409,15 @@ public class Dashboard extends javax.swing.JFrame {
         UserProfile.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(108,122,137)));
     }//GEN-LAST:event_UserProfileMouseMoved
 
+    private void UserProfileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UserProfileMouseClicked
+        Dashboard dash = new Dashboard();
+        dash.setVisible(true);
+        dash.pack();
+        dash.setLocationRelativeTo(null);
+        dash.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_UserProfileMouseClicked
+
     private void UserProfileMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UserProfileMouseExited
         UserProfile.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52,73,94)));
     }//GEN-LAST:event_UserProfileMouseExited
@@ -496,6 +426,15 @@ public class Dashboard extends javax.swing.JFrame {
         SecuritySettings.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(108,122,137)));
     }//GEN-LAST:event_SecuritySettingsMouseMoved
 
+    private void SecuritySettingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SecuritySettingsMouseClicked
+        Security sec = new Security();
+        sec.setVisible(true);
+        sec.pack();
+        sec.setLocationRelativeTo(null);
+        sec.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_SecuritySettingsMouseClicked
+
     private void SecuritySettingsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SecuritySettingsMouseExited
         SecuritySettings.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52,73,94)));
     }//GEN-LAST:event_SecuritySettingsMouseExited
@@ -503,27 +442,6 @@ public class Dashboard extends javax.swing.JFrame {
     private void LogOutMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogOutMouseMoved
         LogOut.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(108,122,137)));
     }//GEN-LAST:event_LogOutMouseMoved
-
-    private void LogOutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogOutMouseExited
-        LogOut.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52,73,94)));
-    }//GEN-LAST:event_LogOutMouseExited
-
-    private void HomeMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseMoved
-        Home.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(108,122,137)));
-    }//GEN-LAST:event_HomeMouseMoved
-
-    private void HomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseExited
-        Home.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52,73,94)));
-    }//GEN-LAST:event_HomeMouseExited
-
-    private void HomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseClicked
-        Main main = new Main();
-        main.setVisible(true);
-        main.pack();
-        main.setLocationRelativeTo(null);
-        main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();
-    }//GEN-LAST:event_HomeMouseClicked
 
     private void LogOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogOutMouseClicked
         addtimestampin(Login.user);
@@ -536,116 +454,26 @@ public class Dashboard extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_LogOutMouseClicked
 
-    private void fnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fnameActionPerformed
+    private void LogOutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogOutMouseExited
+        LogOut.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52,73,94)));
+    }//GEN-LAST:event_LogOutMouseExited
 
-    private void snameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_snameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_snameActionPerformed
+    private void HomeMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseMoved
+        Home.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(108,122,137)));
+    }//GEN-LAST:event_HomeMouseMoved
 
-    private void mobileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mobileActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mobileActionPerformed
-
-    private void UserProfileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UserProfileMouseClicked
-        this.setVisible(true);
-    }//GEN-LAST:event_UserProfileMouseClicked
-    
-    public void settextfields(String user) {
-        try {
-            SetConnection conn = new SetConnection();
-            Connection connect = SetConnection.conn;
-            Statement stm = connect.createStatement();
-            
-            String sql = "select * from user where username='"+user+"'";
-            
-            ResultSet rs = stm.executeQuery(sql);
-            if(rs.next()) {
-                uname.setText(rs.getString("username"));
-                fname.setText(rs.getString("fname"));
-                sname.setText(rs.getString("sname"));
-                mobile.setText(rs.getString("mobile"));
-                address.setText(rs.getString("address"));
-            }
-            connect.close();
-        }
-        catch (Exception e) {}
-        
-    }
-    
-    private void SecuritySettingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SecuritySettingsMouseClicked
-        Security sec = new Security();
-        sec.setVisible(true);
-        sec.pack();
-        sec.setLocationRelativeTo(null);
-        sec.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    private void HomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseClicked
+        Main main = new Main();
+        main.setVisible(true);
+        main.pack();
+        main.setLocationRelativeTo(null);
+        main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.dispose();
-    }//GEN-LAST:event_SecuritySettingsMouseClicked
-    
-    public void adduser(String fname, String sname, String mobile, String address) {
-        try {
-            
-            SetConnection conn = new SetConnection();
-            Connection connect = SetConnection.conn;
-            Statement stm = connect.createStatement();
-            
-            String sql = "update user SET  fname='"+fname+"', sname='"+sname+"', mobile='"+mobile+"', address='"+address+"' where username='"+Login.user+"'";
-            
-            stm.executeUpdate(sql);
-            
-            connect.close();
-        }
-        catch (Exception e) {}
-        
-    }
-    
-    private void saveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveMouseClicked
-        if(fname.getText().equalsIgnoreCase("")) {
-                JOptionPane.showMessageDialog(null, "First Name cannot be NULL");
-            }
-        else if(!fname.getText().matches("[a-zA-Z]+")) {
-                JOptionPane.showMessageDialog(null, "Numbers not allowed in first name!");
-            }
-        else if(sname.getText().equalsIgnoreCase("")) {
-                JOptionPane.showMessageDialog(null, "Surname cannot be NULL");
-            }
-        else if(!sname.getText().matches("[a-zA-Z]+")) {
-                JOptionPane.showMessageDialog(null, "Numbers not allowed in surname!");
-            }
-        else if(mobile.getText().equalsIgnoreCase("")) {
-                JOptionPane.showMessageDialog(null, "Mobile cannot be NULL");
-            }
-        else if(mobile.getText().matches("[a-zA-Z]+")) {
-                JOptionPane.showMessageDialog(null, "Mobile number can not contain digits!");
-            }
-        else if(address.getText().equalsIgnoreCase("")) {
-                JOptionPane.showMessageDialog(null, "Address cannot be NULL");
-            }
-        else {
-            adduser(fname.getText(),sname.getText(),mobile.getText(),address.getText());
-            JOptionPane.showMessageDialog(null, "New changes saved successfully!");
-        }
-    }//GEN-LAST:event_saveMouseClicked
+    }//GEN-LAST:event_HomeMouseClicked
 
-    private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_saveActionPerformed
-
-    private void resetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resetMouseClicked
-        fname.setText("");
-        sname.setText("");
-        mobile.setText("");
-        address.setText("");
-    }//GEN-LAST:event_resetMouseClicked
-
-    private void resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetActionPerformed
-
-    }//GEN-LAST:event_resetActionPerformed
-
-    private void unameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_unameActionPerformed
+    private void HomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseExited
+        Home.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52,73,94)));
+    }//GEN-LAST:event_HomeMouseExited
 
     private void UserStatsMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UserStatsMouseMoved
         UserStats.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(108,122,137)));
@@ -686,12 +514,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_HelpMouseMoved
 
     private void HelpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HelpMouseClicked
-        HelpDashboard help = new HelpDashboard();
-        help.setVisible(true);
-        help.pack();
-        help.setLocationRelativeTo(null);
-        help.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();
+        this.setVisible(true);
     }//GEN-LAST:event_HelpMouseClicked
 
     private void HelpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HelpMouseExited
@@ -715,20 +538,20 @@ public class Dashboard extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HelpDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HelpDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HelpDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HelpDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Dashboard().setVisible(true);
+                new HelpDashboard().setVisible(true);
             }
         });
     }
@@ -741,25 +564,21 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel SecuritySettings;
     private javax.swing.JLabel UserProfile;
     private javax.swing.JLabel UserStats;
-    private javax.swing.JTextArea address;
-    private javax.swing.JTextField fname;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabelClose;
     private javax.swing.JLabel jLabelMin;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField mobile;
-    private javax.swing.JButton reset;
-    private javax.swing.JButton save;
-    private javax.swing.JTextField sname;
-    private javax.swing.JTextField uname;
+    private javax.swing.JTextArea pass;
+    private javax.swing.JTextArea prof;
+    private javax.swing.JTextArea ustats;
     // End of variables declaration//GEN-END:variables
 }

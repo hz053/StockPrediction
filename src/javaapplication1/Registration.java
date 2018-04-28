@@ -11,7 +11,6 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.logging.Level;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import sun.misc.BASE64Encoder;
@@ -549,7 +548,7 @@ public class Registration extends javax.swing.JFrame {
             String ep="";
             try {
                 //ep = p;
-                ep = ""+encrypt(p,"SHA-1","UTF-16").toString();
+                ep = ""+encrypt(p,"SHA-256","UTF-16").toString();
                 //System.out.println(ef);
             }
             catch (Exception ex) {
@@ -566,8 +565,14 @@ public class Registration extends javax.swing.JFrame {
             else if(fname.getText().equalsIgnoreCase("")) {
                 JOptionPane.showMessageDialog(null, "First Name cannot be NULL");
             }
+            else if(!fname.getText().matches("[a-zA-Z]+")) {
+                JOptionPane.showMessageDialog(null, "Numbers not allowed in first name!");
+            }
             else if(sname.getText().equalsIgnoreCase("")) {
                 JOptionPane.showMessageDialog(null, "Surname cannot be NULL");
+            }
+            else if(!sname.getText().matches("[a-zA-Z]+")) {
+                JOptionPane.showMessageDialog(null, "Numbers not allowed in surname!");
             }
             else if(pass.getText().equalsIgnoreCase("")) {
                 JOptionPane.showMessageDialog(null, "Password cannot be NULL");
@@ -575,8 +580,14 @@ public class Registration extends javax.swing.JFrame {
             else if(mobile.getText().equalsIgnoreCase("")) {
                 JOptionPane.showMessageDialog(null, "Mobile cannot be NULL");
             }
+            else if(mobile.getText().matches("[a-zA-Z]+")) {
+                JOptionPane.showMessageDialog(null, "Mobile number can not contain digits!");
+            }
             else if(acode.getText().equalsIgnoreCase("")) {
                 JOptionPane.showMessageDialog(null, "Access code cannot be NULL");
+            }
+            else if(acode.getText().matches("[a-zA-Z]+")) {
+                JOptionPane.showMessageDialog(null, "Only numeric digits are allowed in access code");
             }
             else if(address.getText().equalsIgnoreCase("")) {
                 JOptionPane.showMessageDialog(null, "Address cannot be NULL");
@@ -593,16 +604,6 @@ public class Registration extends javax.swing.JFrame {
                     updateaccesscode(Integer.parseInt(acode.getText()),"USED",uname.getText());
                     JOptionPane.showMessageDialog(null, "Registration completed successfully!");
                 }
-                
-                /*if(u.equals(usr)) {
-                    System.out.println(usr);
-                }
-                if(ep.equals(pas)) {
-                    System.out.println(pas);
-                }
-                else {
-                    JOptionPane.showMessageDialog(null, "Password incorrect");
-                }*/
             }
     }//GEN-LAST:event_submitMouseClicked
 

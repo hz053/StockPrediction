@@ -41,6 +41,8 @@ public class Visualize extends javax.swing.JFrame {
         Home = new javax.swing.JLabel();
         SecuritySettings1 = new javax.swing.JLabel();
         SecuritySettings2 = new javax.swing.JLabel();
+        Help = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -49,8 +51,10 @@ public class Visualize extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(780, 615));
 
         jPanel3.setBackground(new java.awt.Color(52, 73, 94));
+        jPanel3.setPreferredSize(new java.awt.Dimension(250, 514));
 
         UserProfile.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         UserProfile.setForeground(new java.awt.Color(236, 240, 241));
@@ -168,18 +172,39 @@ public class Visualize extends javax.swing.JFrame {
             }
         });
 
+        Help.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        Help.setForeground(new java.awt.Color(236, 240, 241));
+        Help.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons8-why_us.png"))); // NOI18N
+        Help.setText("Help");
+        Help.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Help.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                HelpMouseMoved(evt);
+            }
+        });
+        Help.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                HelpMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                HelpMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(UserProfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(SecuritySettings, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+            .addComponent(SecuritySettings, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
             .addComponent(LogOut, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(Home, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(SecuritySettings1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(SecuritySettings2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(Help, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jSeparator1)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,7 +217,11 @@ public class Visualize extends javax.swing.JFrame {
                 .addComponent(SecuritySettings1)
                 .addGap(18, 18, 18)
                 .addComponent(SecuritySettings2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Help)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(LogOut)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Home)
@@ -258,7 +287,7 @@ public class Visualize extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
@@ -318,12 +347,22 @@ public class Visualize extends javax.swing.JFrame {
     }//GEN-LAST:event_HomeMouseMoved
 
     private void HomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseClicked
+        if(Login.user.equalsIgnoreCase("admin")) {
+            Admin main = new Admin();
+            main.setVisible(true);
+            main.pack();
+            main.setLocationRelativeTo(null);
+            main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            this.dispose();
+        }
+        else {
         Main main = new Main();
         main.setVisible(true);
         main.pack();
         main.setLocationRelativeTo(null);
         main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.dispose();
+        }
     }//GEN-LAST:event_HomeMouseClicked
 
     private void HomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseExited
@@ -406,6 +445,23 @@ public class Visualize extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_SecuritySettings2MouseExited
 
+    private void HelpMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HelpMouseMoved
+        Help.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(108,122,137)));
+    }//GEN-LAST:event_HelpMouseMoved
+
+    private void HelpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HelpMouseClicked
+        HelpVisualize help = new HelpVisualize();
+        help.setVisible(true);
+        help.pack();
+        help.setLocationRelativeTo(null);
+        help.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_HelpMouseClicked
+
+    private void HelpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HelpMouseExited
+        Help.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52,73,94)));
+    }//GEN-LAST:event_HelpMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -442,6 +498,7 @@ public class Visualize extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Help;
     private javax.swing.JLabel Home;
     private javax.swing.JLabel LogOut;
     private javax.swing.JLabel SecuritySettings;
@@ -454,5 +511,6 @@ public class Visualize extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

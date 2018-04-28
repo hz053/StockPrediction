@@ -50,7 +50,8 @@ public class Files extends javax.swing.JFrame {
         ViewAll = new javax.swing.JLabel();
         ViewAll1 = new javax.swing.JLabel();
         ViewAll2 = new javax.swing.JLabel();
-        ViewAll3 = new javax.swing.JLabel();
+        Help = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabelClose = new javax.swing.JLabel();
@@ -58,6 +59,7 @@ public class Files extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(780, 615));
 
         jPanel2.setBackground(new java.awt.Color(44, 62, 80));
         jPanel2.setLayout(null);
@@ -66,9 +68,9 @@ public class Files extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(236, 240, 241));
         jLabel6.setText("Browse to file location:");
         jPanel2.add(jLabel6);
-        jLabel6.setBounds(130, 20, 210, 30);
+        jLabel6.setBounds(100, 20, 210, 30);
         jPanel2.add(jSeparator1);
-        jSeparator1.setBounds(10, 100, 530, 12);
+        jSeparator1.setBounds(10, 100, 510, 12);
 
         Next.setBackground(new java.awt.Color(89, 171, 227));
         Next.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
@@ -86,7 +88,7 @@ public class Files extends javax.swing.JFrame {
             }
         });
         jPanel2.add(Next);
-        Next.setBounds(440, 120, 100, 40);
+        Next.setBounds(410, 110, 100, 40);
 
         Browse.setBackground(new java.awt.Color(242, 38, 19));
         Browse.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
@@ -104,7 +106,7 @@ public class Files extends javax.swing.JFrame {
             }
         });
         jPanel2.add(Browse);
-        Browse.setBounds(440, 50, 100, 40);
+        Browse.setBounds(410, 40, 100, 40);
 
         BrowseField.setBackground(new java.awt.Color(108, 122, 137));
         BrowseField.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
@@ -115,9 +117,10 @@ public class Files extends javax.swing.JFrame {
             }
         });
         jPanel2.add(BrowseField);
-        BrowseField.setBounds(10, 50, 420, 30);
+        BrowseField.setBounds(10, 50, 380, 30);
 
         jPanel3.setBackground(new java.awt.Color(52, 73, 94));
+        jPanel3.setPreferredSize(new java.awt.Dimension(250, 489));
 
         YahooFiles.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         YahooFiles.setForeground(new java.awt.Color(236, 240, 241));
@@ -252,21 +255,22 @@ public class Files extends javax.swing.JFrame {
             }
         });
 
-        ViewAll3.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        ViewAll3.setForeground(new java.awt.Color(236, 240, 241));
-        ViewAll3.setText("      Any other option3");
-        ViewAll3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ViewAll3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        Help.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        Help.setForeground(new java.awt.Color(236, 240, 241));
+        Help.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons8-why_us.png"))); // NOI18N
+        Help.setText("Help");
+        Help.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Help.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
-                ViewAll3MouseMoved(evt);
+                HelpMouseMoved(evt);
             }
         });
-        ViewAll3.addMouseListener(new java.awt.event.MouseAdapter() {
+        Help.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ViewAll3MouseClicked(evt);
+                HelpMouseClicked(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                ViewAll3MouseExited(evt);
+                HelpMouseExited(evt);
             }
         });
 
@@ -275,16 +279,16 @@ public class Files extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(YahooFiles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(TwitterFiles, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+            .addComponent(TwitterFiles, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
             .addComponent(LogOut, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(Home, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(ViewAll, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(ViewAll1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Help, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ViewAll2)
-                    .addComponent(ViewAll3))
+                .addComponent(ViewAll2)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jSeparator2)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -299,9 +303,11 @@ public class Files extends javax.swing.JFrame {
                 .addComponent(ViewAll1)
                 .addGap(28, 28, 28)
                 .addComponent(ViewAll2)
-                .addGap(28, 28, 28)
-                .addComponent(ViewAll3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Help)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(LogOut)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Home)
@@ -364,7 +370,7 @@ public class Files extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
@@ -425,12 +431,22 @@ public class Files extends javax.swing.JFrame {
     }//GEN-LAST:event_HomeMouseMoved
 
     private void HomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseClicked
+        if(Login.user.equalsIgnoreCase("admin")) {
+            Admin main = new Admin();
+            main.setVisible(true);
+            main.pack();
+            main.setLocationRelativeTo(null);
+            main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            this.dispose();
+        }
+        else {
         Main main = new Main();
         main.setVisible(true);
         main.pack();
         main.setLocationRelativeTo(null);
         main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.dispose();
+        }
     }//GEN-LAST:event_HomeMouseClicked
 
     private void HomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseExited
@@ -530,18 +546,6 @@ public class Files extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ViewAll2MouseExited
 
-    private void ViewAll3MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ViewAll3MouseMoved
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ViewAll3MouseMoved
-
-    private void ViewAll3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ViewAll3MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ViewAll3MouseClicked
-
-    private void ViewAll3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ViewAll3MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ViewAll3MouseExited
-
     private void NextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NextMouseClicked
         Twitter twit = new Twitter();
         twit.setVisible(true);
@@ -575,6 +579,23 @@ public class Files extends javax.swing.JFrame {
     private void BrowseFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BrowseFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BrowseFieldActionPerformed
+
+    private void HelpMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HelpMouseMoved
+        Help.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(108,122,137)));
+    }//GEN-LAST:event_HelpMouseMoved
+
+    private void HelpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HelpMouseClicked
+        HelpFiles help = new HelpFiles();
+        help.setVisible(true);
+        help.pack();
+        help.setLocationRelativeTo(null);
+        help.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_HelpMouseClicked
+
+    private void HelpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HelpMouseExited
+        Help.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52,73,94)));
+    }//GEN-LAST:event_HelpMouseExited
 
     /**
      * @param args the command line arguments
@@ -614,6 +635,7 @@ public class Files extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Browse;
     private javax.swing.JTextField BrowseField;
+    private javax.swing.JLabel Help;
     private javax.swing.JLabel Home;
     private javax.swing.JLabel LogOut;
     private javax.swing.JButton Next;
@@ -621,7 +643,6 @@ public class Files extends javax.swing.JFrame {
     private javax.swing.JLabel ViewAll;
     private javax.swing.JLabel ViewAll1;
     private javax.swing.JLabel ViewAll2;
-    private javax.swing.JLabel ViewAll3;
     private javax.swing.JLabel YahooFiles;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
@@ -631,5 +652,6 @@ public class Files extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables
 }

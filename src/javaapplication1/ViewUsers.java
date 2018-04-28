@@ -149,6 +149,7 @@ int pos = 0;
         ViewAccessCodes = new javax.swing.JLabel();
         ViewUsers = new javax.swing.JLabel();
         DeleteUser = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabelClose = new javax.swing.JLabel();
@@ -156,8 +157,11 @@ int pos = 0;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(780, 615));
 
         jPanel2.setBackground(new java.awt.Color(44, 62, 80));
+        jPanel2.setMinimumSize(new java.awt.Dimension(590, 580));
+        jPanel2.setPreferredSize(new java.awt.Dimension(590, 580));
         jPanel2.setLayout(null);
 
         next.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
@@ -170,14 +174,14 @@ int pos = 0;
             }
         });
         jPanel2.add(next);
-        next.setBounds(300, 470, 60, 20);
+        next.setBounds(300, 530, 60, 20);
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(236, 240, 241));
         jLabel2.setIcon(new javax.swing.ImageIcon("/Users/rasikh/Downloads/icons8-chevron_right.png")); // NOI18N
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(350, 460, 20, 40);
+        jLabel2.setBounds(350, 520, 20, 40);
 
         back.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         back.setForeground(new java.awt.Color(236, 240, 241));
@@ -190,7 +194,7 @@ int pos = 0;
             }
         });
         jPanel2.add(back);
-        back.setBounds(200, 460, 80, 40);
+        back.setBounds(200, 520, 80, 40);
 
         jLabel7.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(236, 240, 241));
@@ -215,7 +219,7 @@ int pos = 0;
         jLabel6.setForeground(new java.awt.Color(236, 240, 241));
         jLabel6.setText("First Name:");
         jPanel2.add(jLabel6);
-        jLabel6.setBounds(220, 70, 130, 30);
+        jLabel6.setBounds(220, 80, 130, 30);
 
         fnametxt.setEditable(false);
         fnametxt.setBackground(new java.awt.Color(108, 122, 137));
@@ -228,13 +232,13 @@ int pos = 0;
             }
         });
         jPanel2.add(fnametxt);
-        fnametxt.setBounds(180, 100, 210, 30);
+        fnametxt.setBounds(180, 110, 210, 30);
 
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(236, 240, 241));
         jLabel5.setText("Surname:");
         jPanel2.add(jLabel5);
-        jLabel5.setBounds(240, 130, 130, 30);
+        jLabel5.setBounds(240, 150, 130, 30);
 
         snametxt.setEditable(false);
         snametxt.setBackground(new java.awt.Color(108, 122, 137));
@@ -247,13 +251,13 @@ int pos = 0;
             }
         });
         jPanel2.add(snametxt);
-        snametxt.setBounds(180, 160, 210, 30);
+        snametxt.setBounds(180, 180, 210, 30);
 
         jLabel11.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(236, 240, 241));
         jLabel11.setText("Mobile:");
         jPanel2.add(jLabel11);
-        jLabel11.setBounds(260, 190, 64, 30);
+        jLabel11.setBounds(260, 220, 64, 30);
 
         mobtxt.setEditable(false);
         mobtxt.setBackground(new java.awt.Color(108, 122, 137));
@@ -266,13 +270,13 @@ int pos = 0;
             }
         });
         jPanel2.add(mobtxt);
-        mobtxt.setBounds(180, 220, 210, 30);
+        mobtxt.setBounds(180, 250, 210, 30);
 
         jLabel12.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(236, 240, 241));
         jLabel12.setText("Address:");
         jPanel2.add(jLabel12);
-        jLabel12.setBounds(250, 250, 130, 30);
+        jLabel12.setBounds(250, 290, 130, 30);
 
         addtxt.setEditable(false);
         addtxt.setBackground(new java.awt.Color(108, 122, 137));
@@ -285,13 +289,13 @@ int pos = 0;
             }
         });
         jPanel2.add(addtxt);
-        addtxt.setBounds(180, 280, 210, 30);
+        addtxt.setBounds(180, 320, 210, 30);
 
         jLabel13.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(236, 240, 241));
         jLabel13.setText("Last logged in:");
         jPanel2.add(jLabel13);
-        jLabel13.setBounds(200, 320, 130, 30);
+        jLabel13.setBounds(200, 370, 130, 30);
 
         logtxt.setEditable(false);
         logtxt.setBackground(new java.awt.Color(108, 122, 137));
@@ -304,13 +308,13 @@ int pos = 0;
             }
         });
         jPanel2.add(logtxt);
-        logtxt.setBounds(180, 350, 210, 30);
+        logtxt.setBounds(180, 400, 210, 30);
 
         jLabel14.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(236, 240, 241));
         jLabel14.setText("Duration:");
         jPanel2.add(jLabel14);
-        jLabel14.setBounds(250, 380, 100, 30);
+        jLabel14.setBounds(250, 440, 100, 30);
 
         durationtxt.setEditable(false);
         durationtxt.setBackground(new java.awt.Color(108, 122, 137));
@@ -323,9 +327,10 @@ int pos = 0;
             }
         });
         jPanel2.add(durationtxt);
-        durationtxt.setBounds(180, 410, 210, 30);
+        durationtxt.setBounds(180, 470, 210, 30);
 
         jPanel3.setBackground(new java.awt.Color(52, 73, 94));
+        jPanel3.setPreferredSize(new java.awt.Dimension(250, 580));
 
         UserProfile.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         UserProfile.setForeground(new java.awt.Color(236, 240, 241));
@@ -486,13 +491,14 @@ int pos = 0;
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(UserProfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(SecuritySettings, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+            .addComponent(SecuritySettings, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
             .addComponent(LogOut, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(Home, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(CreateAccessCode, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-            .addComponent(ViewAccessCodes, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-            .addComponent(ViewUsers, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-            .addComponent(DeleteUser, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+            .addComponent(CreateAccessCode, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+            .addComponent(ViewAccessCodes, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+            .addComponent(ViewUsers, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+            .addComponent(DeleteUser, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+            .addComponent(jSeparator1)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -509,11 +515,13 @@ int pos = 0;
                 .addComponent(ViewUsers)
                 .addGap(18, 18, 18)
                 .addComponent(DeleteUser)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(LogOut)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Home)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jPanel1.setBackground(new java.awt.Color(248, 148, 6));
@@ -543,7 +551,7 @@ int pos = 0;
             }
         });
         jPanel1.add(jLabelClose);
-        jLabelClose.setBounds(810, 10, 12, 22);
+        jLabelClose.setBounds(760, 10, 12, 22);
 
         jLabelMin.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabelMin.setForeground(new java.awt.Color(255, 255, 255));
@@ -555,18 +563,20 @@ int pos = 0;
             }
         });
         jPanel1.add(jLabelMin);
-        jLabelMin.setBounds(790, 10, 11, 22);
+        jLabelMin.setBounds(740, 10, 11, 22);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 780, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -993,6 +1003,7 @@ int pos = 0;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField logtxt;
     private javax.swing.JTextField mobtxt;
     private javax.swing.JLabel next;

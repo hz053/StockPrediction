@@ -6,26 +6,23 @@
 package javaapplication1;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 /**
  *
  * @author rasikh
  */
-public class UserStats extends javax.swing.JFrame {
+public class HelpProcess extends javax.swing.JFrame {
 
     /**
-     * Creates new form UserStats
+     * Creates new form HelpProcess
      */
-    public UserStats() {
+    public HelpProcess() {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        settextfields(Login.user);
     }
 
     /**
@@ -38,21 +35,23 @@ public class UserStats extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        logouttxt = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        durationtxt = new javax.swing.JTextField();
-        logintxt = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        prof = new javax.swing.JTextArea();
+        jLabel13 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        pass = new javax.swing.JTextArea();
+        jLabel14 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        ustats = new javax.swing.JTextArea();
         jPanel3 = new javax.swing.JPanel();
         UserProfile = new javax.swing.JLabel();
         SecuritySettings = new javax.swing.JLabel();
         LogOut = new javax.swing.JLabel();
         Home = new javax.swing.JLabel();
-        UserStats = new javax.swing.JLabel();
-        Feedback = new javax.swing.JLabel();
+        UserProfile1 = new javax.swing.JLabel();
         Help = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator1 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabelClose = new javax.swing.JLabel();
@@ -65,68 +64,63 @@ public class UserStats extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(44, 62, 80));
         jPanel2.setLayout(null);
 
-        jLabel6.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(236, 240, 241));
-        jLabel6.setText("Last logged out:");
-        jPanel2.add(jLabel6);
-        jLabel6.setBounds(210, 80, 150, 30);
+        jLabel12.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(236, 240, 241));
+        jLabel12.setText("Q1: How do I change or update my profile details?");
+        jPanel2.add(jLabel12);
+        jLabel12.setBounds(10, 10, 470, 30);
 
-        logouttxt.setBackground(new java.awt.Color(108, 122, 137));
-        logouttxt.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        logouttxt.setForeground(new java.awt.Color(228, 241, 254));
-        logouttxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        logouttxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logouttxtActionPerformed(evt);
-            }
-        });
-        jPanel2.add(logouttxt);
-        logouttxt.setBounds(180, 110, 210, 30);
+        prof.setEditable(false);
+        prof.setBackground(new java.awt.Color(108, 122, 137));
+        prof.setColumns(20);
+        prof.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        prof.setForeground(new java.awt.Color(228, 241, 254));
+        prof.setRows(5);
+        jScrollPane1.setViewportView(prof);
 
-        jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(236, 240, 241));
-        jLabel5.setText("Duration:");
-        jPanel2.add(jLabel5);
-        jLabel5.setBounds(270, 150, 90, 30);
+        jPanel2.add(jScrollPane1);
+        jScrollPane1.setBounds(10, 40, 500, 60);
 
-        durationtxt.setBackground(new java.awt.Color(108, 122, 137));
-        durationtxt.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        durationtxt.setForeground(new java.awt.Color(228, 241, 254));
-        durationtxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        durationtxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                durationtxtActionPerformed(evt);
-            }
-        });
-        jPanel2.add(durationtxt);
-        durationtxt.setBounds(180, 180, 210, 30);
+        jLabel13.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(236, 240, 241));
+        jLabel13.setText("Q2: How do I change my password and 2 factor details?");
+        jPanel2.add(jLabel13);
+        jLabel13.setBounds(10, 120, 500, 30);
 
-        logintxt.setEditable(false);
-        logintxt.setBackground(new java.awt.Color(108, 122, 137));
-        logintxt.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        logintxt.setForeground(new java.awt.Color(228, 241, 254));
-        logintxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        logintxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logintxtActionPerformed(evt);
-            }
-        });
-        jPanel2.add(logintxt);
-        logintxt.setBounds(180, 40, 210, 30);
+        pass.setEditable(false);
+        pass.setBackground(new java.awt.Color(108, 122, 137));
+        pass.setColumns(20);
+        pass.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        pass.setForeground(new java.awt.Color(228, 241, 254));
+        pass.setRows(5);
+        jScrollPane2.setViewportView(pass);
 
-        jLabel8.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(236, 240, 241));
-        jLabel8.setText("Last logged in:");
-        jPanel2.add(jLabel8);
-        jLabel8.setBounds(220, 10, 130, 30);
+        jPanel2.add(jScrollPane2);
+        jScrollPane2.setBounds(10, 150, 500, 60);
+
+        jLabel14.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(236, 240, 241));
+        jLabel14.setText("Q3: How do I know when was the last time I logged in?");
+        jPanel2.add(jLabel14);
+        jLabel14.setBounds(10, 230, 500, 30);
+
+        ustats.setEditable(false);
+        ustats.setBackground(new java.awt.Color(108, 122, 137));
+        ustats.setColumns(20);
+        ustats.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        ustats.setForeground(new java.awt.Color(228, 241, 254));
+        ustats.setRows(5);
+        jScrollPane3.setViewportView(ustats);
+
+        jPanel2.add(jScrollPane3);
+        jScrollPane3.setBounds(10, 260, 500, 60);
 
         jPanel3.setBackground(new java.awt.Color(52, 73, 94));
-        jPanel3.setPreferredSize(new java.awt.Dimension(250, 580));
+        jPanel3.setPreferredSize(new java.awt.Dimension(250, 514));
 
         UserProfile.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         UserProfile.setForeground(new java.awt.Color(236, 240, 241));
-        UserProfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons8-user.png"))); // NOI18N
-        UserProfile.setText("User Profile");
+        UserProfile.setText("Step 3");
         UserProfile.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         UserProfile.setMinimumSize(new java.awt.Dimension(196, 48));
         UserProfile.setPreferredSize(new java.awt.Dimension(196, 48));
@@ -146,8 +140,7 @@ public class UserStats extends javax.swing.JFrame {
 
         SecuritySettings.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         SecuritySettings.setForeground(new java.awt.Color(236, 240, 241));
-        SecuritySettings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons8-key.png"))); // NOI18N
-        SecuritySettings.setText("Security Settings");
+        SecuritySettings.setText(" Step 2");
         SecuritySettings.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         SecuritySettings.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -201,41 +194,23 @@ public class UserStats extends javax.swing.JFrame {
             }
         });
 
-        UserStats.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        UserStats.setForeground(new java.awt.Color(236, 240, 241));
-        UserStats.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons8-new_spreadsheet.png"))); // NOI18N
-        UserStats.setText("User Stats");
-        UserStats.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        UserStats.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        UserProfile1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        UserProfile1.setForeground(new java.awt.Color(236, 240, 241));
+        UserProfile1.setText("Step 1");
+        UserProfile1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        UserProfile1.setMinimumSize(new java.awt.Dimension(196, 48));
+        UserProfile1.setPreferredSize(new java.awt.Dimension(196, 48));
+        UserProfile1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
-                UserStatsMouseMoved(evt);
+                UserProfile1MouseMoved(evt);
             }
         });
-        UserStats.addMouseListener(new java.awt.event.MouseAdapter() {
+        UserProfile1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                UserStatsMouseClicked(evt);
+                UserProfile1MouseClicked(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                UserStatsMouseExited(evt);
-            }
-        });
-
-        Feedback.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        Feedback.setForeground(new java.awt.Color(236, 240, 241));
-        Feedback.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons8-comments.png"))); // NOI18N
-        Feedback.setText("Feedback");
-        Feedback.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Feedback.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                FeedbackMouseMoved(evt);
-            }
-        });
-        Feedback.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                FeedbackMouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                FeedbackMouseExited(evt);
+                UserProfile1MouseExited(evt);
             }
         });
 
@@ -262,35 +237,42 @@ public class UserStats extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(UserProfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(SecuritySettings, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
             .addComponent(LogOut, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(Home, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(UserStats, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(Feedback, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(UserProfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
             .addComponent(Help, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jSeparator2)
+            .addComponent(jSeparator1)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(UserProfile1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(UserProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(72, 72, 72)
                 .addComponent(SecuritySettings)
                 .addGap(18, 18, 18)
-                .addComponent(UserStats)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(UserProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 221, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Help)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Feedback)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(LogOut)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Home)
                 .addGap(15, 15, 15))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(16, 16, 16)
+                    .addComponent(UserProfile1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(450, Short.MAX_VALUE)))
         );
 
         jPanel1.setBackground(new java.awt.Color(248, 148, 6));
@@ -298,7 +280,7 @@ public class UserStats extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Dashboard");
+        jLabel1.setText("Process");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(10, 10, 120, 22);
 
@@ -348,56 +330,20 @@ public class UserStats extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    public void settextfields(String user) {
-        try {
-            SetConnection conn = new SetConnection();
-            Connection connect = SetConnection.conn;
-            Statement stm = connect.createStatement();
-            
-            String sql = "select date_format(last_logged_in,'%Y-%m-%d %H:%i:%s') as last_logged_in, date_format(last_logged_out,'%Y-%m-%d %H:%i:%s') as last_logged_out,TIMEDIFF(last_logged_out,last_logged_in) as time from user where username='"+user+"'";
-            
-            ResultSet rs = stm.executeQuery(sql);
-            if(rs.next()) {
-                logintxt.setText(rs.getString("last_logged_in"));
-                logouttxt.setText(rs.getString("last_logged_out"));
-                durationtxt.setText(rs.getString("time"));
-            }
-            connect.close();
-        }
-        catch (Exception e) {}
-        
-    }
-    private void logouttxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logouttxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_logouttxtActionPerformed
-
-    private void durationtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_durationtxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_durationtxtActionPerformed
-
-    private void logintxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logintxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_logintxtActionPerformed
 
     private void UserProfileMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UserProfileMouseMoved
         UserProfile.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(108,122,137)));
     }//GEN-LAST:event_UserProfileMouseMoved
 
     private void UserProfileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UserProfileMouseClicked
-        Dashboard dash = new Dashboard();
-        dash.setVisible(true);
-        dash.pack();
-        dash.setLocationRelativeTo(null);
-        dash.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();
+        this.setVisible(true);
     }//GEN-LAST:event_UserProfileMouseClicked
 
     private void UserProfileMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UserProfileMouseExited
@@ -424,54 +370,7 @@ public class UserStats extends javax.swing.JFrame {
     private void LogOutMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogOutMouseMoved
         LogOut.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(108,122,137)));
     }//GEN-LAST:event_LogOutMouseMoved
-
-    private void LogOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogOutMouseClicked
-        addtimestampin(Login.user);
-        addtimestamp(Login.user);
-        Login log = new Login();
-        log.setVisible(true);
-        log.pack();
-        log.setLocationRelativeTo(null);
-        log.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();
-    }//GEN-LAST:event_LogOutMouseClicked
-
-    private void LogOutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogOutMouseExited
-        LogOut.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52,73,94)));
-    }//GEN-LAST:event_LogOutMouseExited
-
-    private void HomeMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseMoved
-        Home.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(108,122,137)));
-    }//GEN-LAST:event_HomeMouseMoved
-
-    private void HomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseClicked
-        Main main = new Main();
-        main.setVisible(true);
-        main.pack();
-        main.setLocationRelativeTo(null);
-        main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();
-    }//GEN-LAST:event_HomeMouseClicked
-
-    private void HomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseExited
-        Home.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52,73,94)));
-    }//GEN-LAST:event_HomeMouseExited
-
-    private void UserStatsMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UserStatsMouseMoved
-        UserStats.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(108,122,137)));
-    }//GEN-LAST:event_UserStatsMouseMoved
-
-    private void UserStatsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UserStatsMouseClicked
-        this.setVisible(true);
-    }//GEN-LAST:event_UserStatsMouseClicked
-
-    private void UserStatsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UserStatsMouseExited
-        UserStats.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52,73,94)));
-    }//GEN-LAST:event_UserStatsMouseExited
-
-    private void jLabelCloseMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseMouseMoved
-
-    }//GEN-LAST:event_jLabelCloseMouseMoved
+    
     public void addtimestampin(String user) {
             try {
             
@@ -505,7 +404,78 @@ public class UserStats extends javax.swing.JFrame {
         }
         catch (Exception e) {}
     }
-        
+
+    private void LogOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogOutMouseClicked
+        addtimestampin(Login.user);
+        addtimestamp(Login.user);
+        Login log = new Login();
+        log.setVisible(true);
+        log.pack();
+        log.setLocationRelativeTo(null);
+        log.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_LogOutMouseClicked
+
+    private void LogOutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogOutMouseExited
+        LogOut.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52,73,94)));
+    }//GEN-LAST:event_LogOutMouseExited
+
+    private void HomeMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseMoved
+        Home.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(108,122,137)));
+    }//GEN-LAST:event_HomeMouseMoved
+
+    private void HomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseClicked
+        if(Login.user.equalsIgnoreCase("admin")) {
+            Admin main = new Admin();
+            main.setVisible(true);
+            main.pack();
+            main.setLocationRelativeTo(null);
+            main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            this.dispose();
+        }
+        else {
+        Main main = new Main();
+        main.setVisible(true);
+        main.pack();
+        main.setLocationRelativeTo(null);
+        main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+        }
+
+    }//GEN-LAST:event_HomeMouseClicked
+
+    private void HomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseExited
+        Home.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52,73,94)));
+    }//GEN-LAST:event_HomeMouseExited
+
+    private void UserProfile1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UserProfile1MouseMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UserProfile1MouseMoved
+
+    private void UserProfile1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UserProfile1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UserProfile1MouseClicked
+
+    private void UserProfile1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UserProfile1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UserProfile1MouseExited
+
+    private void HelpMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HelpMouseMoved
+        Help.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(108,122,137)));
+    }//GEN-LAST:event_HelpMouseMoved
+
+    private void HelpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HelpMouseClicked
+        this.setVisible(true);
+    }//GEN-LAST:event_HelpMouseClicked
+
+    private void HelpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HelpMouseExited
+        Help.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52,73,94)));
+    }//GEN-LAST:event_HelpMouseExited
+
+    private void jLabelCloseMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseMouseMoved
+
+    }//GEN-LAST:event_jLabelCloseMouseMoved
+
     private void jLabelCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseMouseClicked
         addtimestampin(Login.user);
         addtimestamp(Login.user);
@@ -519,40 +489,6 @@ public class UserStats extends javax.swing.JFrame {
     private void jLabelMinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMinMouseClicked
         this.setState(JFrame.ICONIFIED);
     }//GEN-LAST:event_jLabelMinMouseClicked
-
-    private void FeedbackMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FeedbackMouseMoved
-        Feedback.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(108,122,137)));
-    }//GEN-LAST:event_FeedbackMouseMoved
-
-    private void FeedbackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FeedbackMouseClicked
-        Feedback feed = new Feedback();
-        feed.setVisible(true);
-        feed.pack();
-        feed.setLocationRelativeTo(null);
-        feed.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();
-    }//GEN-LAST:event_FeedbackMouseClicked
-
-    private void FeedbackMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FeedbackMouseExited
-        Feedback.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52,73,94)));
-    }//GEN-LAST:event_FeedbackMouseExited
-
-    private void HelpMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HelpMouseMoved
-        Help.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(108,122,137)));
-    }//GEN-LAST:event_HelpMouseMoved
-
-    private void HelpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HelpMouseClicked
-        HelpDashboard help = new HelpDashboard();
-        help.setVisible(true);
-        help.pack();
-        help.setLocationRelativeTo(null);
-        help.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();
-    }//GEN-LAST:event_HelpMouseClicked
-
-    private void HelpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HelpMouseExited
-        Help.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52,73,94)));
-    }//GEN-LAST:event_HelpMouseExited
 
     /**
      * @param args the command line arguments
@@ -571,44 +507,46 @@ public class UserStats extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UserStats.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HelpProcess.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UserStats.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HelpProcess.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UserStats.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HelpProcess.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UserStats.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HelpProcess.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UserStats().setVisible(true);
+                new HelpProcess().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Feedback;
     private javax.swing.JLabel Help;
     private javax.swing.JLabel Home;
     private javax.swing.JLabel LogOut;
     private javax.swing.JLabel SecuritySettings;
     private javax.swing.JLabel UserProfile;
-    private javax.swing.JLabel UserStats;
-    private javax.swing.JTextField durationtxt;
+    private javax.swing.JLabel UserProfile1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabelClose;
     private javax.swing.JLabel jLabelMin;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField logintxt;
-    private javax.swing.JTextField logouttxt;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextArea pass;
+    private javax.swing.JTextArea prof;
+    private javax.swing.JTextArea ustats;
     // End of variables declaration//GEN-END:variables
 }

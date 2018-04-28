@@ -50,6 +50,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         ViewAccessCodes = new javax.swing.JLabel();
         ViewUsers = new javax.swing.JLabel();
         DeleteUser = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         fname = new javax.swing.JTextField();
@@ -65,6 +66,8 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(780, 615));
+        getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(248, 148, 6));
         jPanel1.setLayout(null);
@@ -93,7 +96,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jLabelClose);
-        jLabelClose.setBounds(810, 10, 12, 22);
+        jLabelClose.setBounds(760, 10, 12, 22);
 
         jLabelMin.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabelMin.setForeground(new java.awt.Color(255, 255, 255));
@@ -105,7 +108,10 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jLabelMin);
-        jLabelMin.setBounds(790, 10, 11, 22);
+        jLabelMin.setBounds(740, 10, 11, 22);
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 780, 40);
 
         jPanel3.setBackground(new java.awt.Color(52, 73, 94));
 
@@ -268,13 +274,14 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(UserProfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(SecuritySettings, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+            .addComponent(SecuritySettings, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(LogOut, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(Home, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(CreateAccessCode, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-            .addComponent(ViewAccessCodes, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-            .addComponent(ViewUsers, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-            .addComponent(DeleteUser, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+            .addComponent(CreateAccessCode, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+            .addComponent(ViewAccessCodes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(ViewUsers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(DeleteUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jSeparator2)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,21 +298,23 @@ public class AdminDashboard extends javax.swing.JFrame {
                 .addComponent(ViewUsers)
                 .addGap(18, 18, 18)
                 .addComponent(DeleteUser)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(LogOut)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Home)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
+        getContentPane().add(jPanel3);
+        jPanel3.setBounds(0, 40, 250, 580);
+
         jPanel2.setBackground(new java.awt.Color(44, 62, 80));
-        jPanel2.setLayout(null);
 
         jLabel6.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(236, 240, 241));
         jLabel6.setText("First Name:");
-        jPanel2.add(jLabel6);
-        jLabel6.setBounds(220, 20, 130, 30);
 
         fname.setBackground(new java.awt.Color(108, 122, 137));
         fname.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
@@ -316,14 +325,10 @@ public class AdminDashboard extends javax.swing.JFrame {
                 fnameActionPerformed(evt);
             }
         });
-        jPanel2.add(fname);
-        fname.setBounds(180, 50, 210, 30);
 
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(236, 240, 241));
         jLabel5.setText("Surname:");
-        jPanel2.add(jLabel5);
-        jLabel5.setBounds(240, 100, 130, 30);
 
         sname.setBackground(new java.awt.Color(108, 122, 137));
         sname.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
@@ -334,14 +339,10 @@ public class AdminDashboard extends javax.swing.JFrame {
                 snameActionPerformed(evt);
             }
         });
-        jPanel2.add(sname);
-        sname.setBounds(180, 130, 210, 30);
 
         jLabel10.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(236, 240, 241));
         jLabel10.setText("Mobile:");
-        jPanel2.add(jLabel10);
-        jLabel10.setBounds(260, 180, 64, 30);
 
         mobile.setBackground(new java.awt.Color(108, 122, 137));
         mobile.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
@@ -352,14 +353,10 @@ public class AdminDashboard extends javax.swing.JFrame {
                 mobileActionPerformed(evt);
             }
         });
-        jPanel2.add(mobile);
-        mobile.setBounds(180, 210, 210, 30);
 
         jLabel12.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(236, 240, 241));
         jLabel12.setText("Address:");
-        jPanel2.add(jLabel12);
-        jLabel12.setBounds(250, 260, 130, 30);
 
         address.setBackground(new java.awt.Color(108, 122, 137));
         address.setColumns(20);
@@ -367,9 +364,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         address.setForeground(new java.awt.Color(228, 241, 254));
         address.setRows(5);
         jScrollPane1.setViewportView(address);
-
-        jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(160, 300, 270, 150);
 
         Save.setBackground(new java.awt.Color(89, 171, 227));
         Save.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
@@ -386,8 +380,6 @@ public class AdminDashboard extends javax.swing.JFrame {
                 SaveActionPerformed(evt);
             }
         });
-        jPanel2.add(Save);
-        Save.setBounds(180, 460, 100, 40);
 
         Reset.setBackground(new java.awt.Color(242, 38, 19));
         Reset.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
@@ -404,28 +396,72 @@ public class AdminDashboard extends javax.swing.JFrame {
                 ResetActionPerformed(evt);
             }
         });
-        jPanel2.add(Reset);
-        Reset.setBounds(320, 460, 100, 40);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(220, 220, 220)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(180, 180, 180)
+                        .addComponent(fname, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(240, 240, 240)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(180, 180, 180)
+                        .addComponent(sname, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(260, 260, 260)
+                        .addComponent(jLabel10))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(180, 180, 180)
+                        .addComponent(mobile, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(250, 250, 250)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(160, 160, 160)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(180, 180, 180)
+                        .addComponent(Save, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(Reset, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(160, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(fname, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(sname, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(mobile, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Save, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Reset, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
+
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(243, 40, 590, 580);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -600,11 +636,20 @@ public class AdminDashboard extends javax.swing.JFrame {
         if(fname.getText().equalsIgnoreCase("")) {
                 JOptionPane.showMessageDialog(null, "First Name cannot be NULL");
             }
+        else if(!fname.getText().matches("[a-zA-Z]+")) {
+                JOptionPane.showMessageDialog(null, "Numbers not allowed in first name!");
+            }
         else if(sname.getText().equalsIgnoreCase("")) {
                 JOptionPane.showMessageDialog(null, "Surname cannot be NULL");
             }
+        else if(!sname.getText().matches("[a-zA-Z]+")) {
+                JOptionPane.showMessageDialog(null, "Numbers not allowed in surname!");
+            }
         else if(mobile.getText().equalsIgnoreCase("")) {
                 JOptionPane.showMessageDialog(null, "Mobile cannot be NULL");
+            }
+        else if(mobile.getText().matches("[a-zA-Z]+")) {
+                JOptionPane.showMessageDialog(null, "Mobile number can not contain digits!");
             }
         else if(address.getText().equalsIgnoreCase("")) {
                 JOptionPane.showMessageDialog(null, "Address cannot be NULL");
@@ -877,6 +922,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField mobile;
     private javax.swing.JTextField sname;
     // End of variables declaration//GEN-END:variables

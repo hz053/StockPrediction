@@ -362,7 +362,7 @@ public static Timestamp time = new Timestamp(System.currentTimeMillis());
             String p = password.getText();
             String ep = "";
             try {
-                ep = ""+encrypt(p,"SHA-1","UTF-16").toString();
+                ep = ""+encrypt(p,"SHA-256","UTF-16").toString();
             }
             catch (Exception ex) {
                

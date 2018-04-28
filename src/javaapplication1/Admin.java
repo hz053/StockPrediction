@@ -44,6 +44,8 @@ public class Admin extends javax.swing.JFrame {
         Files = new javax.swing.JLabel();
         Process = new javax.swing.JLabel();
         Visualize = new javax.swing.JLabel();
+        Tickets = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabelClose = new javax.swing.JLabel();
@@ -51,6 +53,7 @@ public class Admin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(780, 615));
 
         jPanel2.setBackground(new java.awt.Color(44, 62, 80));
         jPanel2.setLayout(null);
@@ -71,13 +74,13 @@ public class Admin extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(236, 240, 241));
         jLabel8.setText("Process");
         jPanel2.add(jLabel8);
-        jLabel8.setBounds(220, 430, 130, 30);
+        jLabel8.setBounds(220, 510, 130, 30);
 
         jLabel9.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(236, 240, 241));
         jLabel9.setText("Visualize");
         jPanel2.add(jLabel9);
-        jLabel9.setBounds(510, 430, 130, 30);
+        jLabel9.setBounds(510, 510, 130, 30);
 
         Dashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Actions-user-properties-icon.png"))); // NOI18N
         Dashboard.setToolTipText("");
@@ -125,12 +128,15 @@ public class Admin extends javax.swing.JFrame {
             }
         });
         Process.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ProcessMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 ProcessMouseExited(evt);
             }
         });
         jPanel2.add(Process);
-        Process.setBounds(190, 280, 130, 150);
+        Process.setBounds(190, 360, 130, 150);
 
         Visualize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/chart-search-icon.png"))); // NOI18N
         Visualize.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -141,12 +147,40 @@ public class Admin extends javax.swing.JFrame {
             }
         });
         Visualize.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                VisualizeMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 VisualizeMouseExited(evt);
             }
         });
         jPanel2.add(Visualize);
-        Visualize.setBounds(500, 280, 130, 150);
+        Visualize.setBounds(500, 360, 130, 150);
+
+        Tickets.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/my-tickets-icon.png"))); // NOI18N
+        Tickets.setToolTipText("");
+        Tickets.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Tickets.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                TicketsMouseMoved(evt);
+            }
+        });
+        Tickets.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TicketsMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                TicketsMouseExited(evt);
+            }
+        });
+        jPanel2.add(Tickets);
+        Tickets.setBounds(350, 220, 130, 150);
+
+        jLabel10.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(236, 240, 241));
+        jLabel10.setText("Tickets");
+        jPanel2.add(jLabel10);
+        jLabel10.setBounds(380, 360, 80, 30);
 
         jPanel1.setBackground(new java.awt.Color(248, 148, 6));
         jPanel1.setLayout(null);
@@ -201,7 +235,7 @@ public class Admin extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -306,6 +340,41 @@ public class Admin extends javax.swing.JFrame {
         this.setState(JFrame.ICONIFIED);
     }//GEN-LAST:event_jLabelMinMouseClicked
 
+    private void TicketsMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TicketsMouseMoved
+        Tickets.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(108,122,137)));
+    }//GEN-LAST:event_TicketsMouseMoved
+
+    private void TicketsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TicketsMouseClicked
+        Tickets tick = new Tickets();
+        tick.setVisible(true);
+        tick.pack();
+        tick.setLocationRelativeTo(null);
+        tick.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_TicketsMouseClicked
+
+    private void TicketsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TicketsMouseExited
+        Tickets.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44,62,80)));
+    }//GEN-LAST:event_TicketsMouseExited
+
+    private void ProcessMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProcessMouseClicked
+        Process proc = new Process();
+        proc.setVisible(true);
+        proc.pack();
+        proc.setLocationRelativeTo(null);
+        proc.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_ProcessMouseClicked
+
+    private void VisualizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VisualizeMouseClicked
+        Visualize vis = new Visualize();
+        vis.setVisible(true);
+        vis.pack();
+        vis.setLocationRelativeTo(null);
+        vis.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_VisualizeMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -345,8 +414,10 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JLabel Dashboard;
     private javax.swing.JLabel Files;
     private javax.swing.JLabel Process;
+    private javax.swing.JLabel Tickets;
     private javax.swing.JLabel Visualize;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

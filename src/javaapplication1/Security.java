@@ -64,6 +64,9 @@ public class Security extends javax.swing.JFrame {
         LogOut = new javax.swing.JLabel();
         Home = new javax.swing.JLabel();
         UserStats = new javax.swing.JLabel();
+        Feedback = new javax.swing.JLabel();
+        Help = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabelClose = new javax.swing.JLabel();
@@ -71,6 +74,7 @@ public class Security extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(780, 615));
 
         jPanel2.setBackground(new java.awt.Color(44, 62, 80));
         jPanel2.setLayout(null);
@@ -165,6 +169,7 @@ public class Security extends javax.swing.JFrame {
         jLabel11.setBounds(180, 180, 240, 30);
 
         jPanel3.setBackground(new java.awt.Color(52, 73, 94));
+        jPanel3.setPreferredSize(new java.awt.Dimension(250, 459));
 
         UserProfile.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         UserProfile.setForeground(new java.awt.Color(236, 240, 241));
@@ -263,15 +268,56 @@ public class Security extends javax.swing.JFrame {
             }
         });
 
+        Feedback.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        Feedback.setForeground(new java.awt.Color(236, 240, 241));
+        Feedback.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons8-comments.png"))); // NOI18N
+        Feedback.setText("Feedback");
+        Feedback.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Feedback.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                FeedbackMouseMoved(evt);
+            }
+        });
+        Feedback.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                FeedbackMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                FeedbackMouseExited(evt);
+            }
+        });
+
+        Help.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        Help.setForeground(new java.awt.Color(236, 240, 241));
+        Help.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons8-why_us.png"))); // NOI18N
+        Help.setText("Help");
+        Help.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Help.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                HelpMouseMoved(evt);
+            }
+        });
+        Help.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                HelpMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                HelpMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(UserProfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(SecuritySettings, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+            .addComponent(SecuritySettings, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
             .addComponent(LogOut, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(Home, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(UserStats, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Feedback, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Help, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jSeparator2)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -282,7 +328,13 @@ public class Security extends javax.swing.JFrame {
                 .addComponent(SecuritySettings)
                 .addGap(18, 18, 18)
                 .addComponent(UserStats)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 205, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Help)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Feedback)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(LogOut)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Home)
@@ -316,7 +368,7 @@ public class Security extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jLabelClose);
-        jLabelClose.setBounds(770, 10, 12, 22);
+        jLabelClose.setBounds(760, 10, 12, 22);
 
         jLabelMin.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabelMin.setForeground(new java.awt.Color(255, 255, 255));
@@ -328,7 +380,7 @@ public class Security extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jLabelMin);
-        jLabelMin.setBounds(750, 10, 11, 22);
+        jLabelMin.setBounds(740, 10, 11, 22);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -346,8 +398,8 @@ public class Security extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)))
         );
 
         pack();
@@ -588,7 +640,7 @@ public class Security extends javax.swing.JFrame {
                 String barcodeData = t.getGoogleAuthenticatorBarCode(secretKey,Login.user,"Stock Prediction");
             //calls to createQRCode
             try {
-                t.createQRCode(barcodeData,"src/resources/qr.png",150,150);
+                t.createQRCode(barcodeData,"src/resources/qruser.png",150,150);
                 Thread.sleep(3000);
             }
             catch(Exception e) {
@@ -603,7 +655,7 @@ public class Security extends javax.swing.JFrame {
             qrImg.setVisible(true);
             Next.setVisible(true);
             desc.setVisible(true);
-            qrImg.setIcon(new ImageIcon(getClass().getResource("/resources/qr.png")));
+            qrImg.setIcon(new ImageIcon(getClass().getResource("/resources/qruser.png")));
             }
             if(input == JOptionPane.OK_OPTION)
             {
@@ -615,7 +667,7 @@ public class Security extends javax.swing.JFrame {
             qrImg.setVisible(true);
             Next.setVisible(true);
             desc.setVisible(true);
-            qrImg.setIcon(new ImageIcon(getClass().getResource("/resources/qr.png")));
+            qrImg.setIcon(new ImageIcon(getClass().getResource("/resources/qruser.png")));
             }
             if(input == JOptionPane.CANCEL_OPTION) {
                 if(twoFactor.getText()=="Enabled") {
@@ -662,6 +714,40 @@ public class Security extends javax.swing.JFrame {
         UserStats.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52,73,94)));
     }//GEN-LAST:event_UserStatsMouseExited
 
+    private void FeedbackMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FeedbackMouseMoved
+        Feedback.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(108,122,137)));
+    }//GEN-LAST:event_FeedbackMouseMoved
+
+    private void FeedbackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FeedbackMouseClicked
+        Feedback feed = new Feedback();
+        feed.setVisible(true);
+        feed.pack();
+        feed.setLocationRelativeTo(null);
+        feed.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_FeedbackMouseClicked
+
+    private void FeedbackMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FeedbackMouseExited
+        Feedback.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52,73,94)));
+    }//GEN-LAST:event_FeedbackMouseExited
+
+    private void HelpMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HelpMouseMoved
+        Help.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(108,122,137)));
+    }//GEN-LAST:event_HelpMouseMoved
+
+    private void HelpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HelpMouseClicked
+        HelpDashboard help = new HelpDashboard();
+        help.setVisible(true);
+        help.pack();
+        help.setLocationRelativeTo(null);
+        help.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_HelpMouseClicked
+
+    private void HelpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HelpMouseExited
+        Help.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52,73,94)));
+    }//GEN-LAST:event_HelpMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -698,6 +784,8 @@ public class Security extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Feedback;
+    private javax.swing.JLabel Help;
     private javax.swing.JLabel Home;
     private javax.swing.JLabel LogOut;
     private javax.swing.JButton Next;
@@ -717,6 +805,7 @@ public class Security extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPasswordField jPasswordField4;
     private javax.swing.JPasswordField jPasswordField5;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel qrImg;
     private javax.swing.JToggleButton twoFactor;
     // End of variables declaration//GEN-END:variables

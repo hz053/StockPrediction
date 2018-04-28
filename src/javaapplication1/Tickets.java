@@ -168,6 +168,7 @@ int pos = 0;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(780, 615));
 
         jPanel2.setBackground(new java.awt.Color(44, 62, 80));
         jPanel2.setLayout(null);
@@ -347,7 +348,7 @@ int pos = 0;
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Dashboard");
+        jLabel1.setText("Tickets");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(10, 10, 120, 22);
 
@@ -433,7 +434,7 @@ int pos = 0;
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(391, Short.MAX_VALUE)
+                .addContainerGap(457, Short.MAX_VALUE)
                 .addComponent(LogOut)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Home)
@@ -549,7 +550,7 @@ int pos = 0;
     }//GEN-LAST:event_HomeMouseMoved
 
     private void HomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseClicked
-        Main main = new Main();
+        Admin main = new Admin();
         main.setVisible(true);
         main.pack();
         main.setLocationRelativeTo(null);
